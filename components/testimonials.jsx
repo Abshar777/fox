@@ -37,12 +37,14 @@ const QUOTES = [
 
 function Quote({ q, n, m }) {
   return (
-    <figure className="mx-3 flex w-[80vw] shrink-0 flex-col justify-between border border-[var(--rule)] bg-paper p-7 sm:w-[42vw] lg:w-[26vw]">
-      <span className="u-display text-4xl leading-none text-gold">&ldquo;</span>
-      <blockquote className="mt-3 text-[1.02rem] leading-relaxed text-ink">
+    <figure className="mx-2 flex w-[78vw] shrink-0 flex-col justify-between border border-[var(--rule)] bg-paper p-5 sm:mx-3 sm:w-[44vw] sm:p-7 lg:w-[26vw]">
+      <span className="u-display text-3xl leading-none text-gold sm:text-4xl">
+        &ldquo;
+      </span>
+      <blockquote className="mt-2 text-[0.9rem] leading-relaxed text-ink sm:mt-3 sm:text-[1.02rem]">
         {q}
       </blockquote>
-      <figcaption className="mt-7 border-t border-[var(--rule)] pt-4">
+      <figcaption className="mt-5 border-t border-[var(--rule)] pt-3.5 sm:mt-7 sm:pt-4">
         <p className="u-eyebrow text-ink">{n}</p>
         <p className="u-mono mt-1 text-[0.6rem] text-ink-45">{m}</p>
       </figcaption>
@@ -52,7 +54,7 @@ function Quote({ q, n, m }) {
 
 export default function Testimonials() {
   return (
-    <section className="relative py-24 md:py-32">
+    <section className="relative py-20 md:py-32">
       <div className="u-shell">
         <SectionHead label="The Record" />
         <Reveal
@@ -63,17 +65,21 @@ export default function Testimonials() {
         </Reveal>
       </div>
 
-      <div className="mt-14 space-y-4">
+      <div className="mt-10 space-y-3 md:mt-14 md:space-y-4">
         <Marquee speed={58}>
           {QUOTES.map((t, i) => (
             <Quote key={`a-${i}`} {...t} />
           ))}
         </Marquee>
-        <Marquee speed={64} direction={-1}>
-          {[...QUOTES].reverse().map((t, i) => (
-            <Quote key={`b-${i}`} {...t} />
-          ))}
-        </Marquee>
+        {/* second lane is desktop only — on a phone one row is plenty, and it
+            halves both the section height and the running animation cost */}
+        <div className="hidden md:block">
+          <Marquee speed={64} direction={-1}>
+            {[...QUOTES].reverse().map((t, i) => (
+              <Quote key={`b-${i}`} {...t} />
+            ))}
+          </Marquee>
+        </div>
       </div>
     </section>
   );
