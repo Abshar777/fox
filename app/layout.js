@@ -40,11 +40,50 @@ export const metadata = {
     "risk management",
     "trading mentorship",
   ],
+  applicationName: "Wolfpack Wealth Academy",
+  authors: [{ name: "Wolfpack Wealth Academy" }],
+  creator: "Wolfpack Wealth Academy",
+  publisher: "Wolfpack Wealth Academy",
+  category: "education",
+  alternates: { canonical: "/" },
+  // app/icon.png and app/apple-icon.png are picked up automatically; this adds
+  // the explicit sizes some crawlers and Android launchers look for.
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+    shortcut: ["/icon.png"],
+  },
   openGraph: {
+    type: "website",
+    siteName: "Wolfpack Wealth Academy",
+    locale: "en_IN",
+    url: "/",
     title: "Wolfpack Wealth Academy | Forex Trading Academy in Kochi",
     description:
       "Structured Forex education, live mentorship and real time market analysis in Kochi, Kerala.",
-    type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Wolfpack Wealth Academy",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wolfpack Wealth Academy | Forex Trading Academy in Kochi",
+    description:
+      "Structured Forex education, live mentorship and real time market analysis in Kochi, Kerala.",
+    images: ["/og.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
 };
 

@@ -2,49 +2,80 @@
 
 import { useRef } from "react";
 import { gsap, useIsoLayoutEffect, REDUCED } from "@/lib/gsap";
-import { Reveal, Magnetic, MaskUp } from "./ui";
-import LogoOrb from "./logo-orb";
+import { Magnetic, Marquee, MaskUp, Reveal } from "./ui";
+import { CandleGlyph } from "./icons";
+
+const PROOF = [
+  "Beginner friendly",
+  "Mentor led",
+  "Online & offline",
+  "Kochi based",
+];
 
 export default function Cta() {
   const root = useRef(null);
+  const glow = useRef(null);
 
   useIsoLayoutEffect(() => {
-    if (REDUCED()) return;
+    if (!root.current || REDUCED()) return;
 
     const ctx = gsap.context((self) => {
       const q = self.selector;
+      const section = root.current;
 
-      gsap.fromTo(
-        q(".cta-fox"),
-        { yPercent: 18, scale: 0.86 },
-        {
-          yPercent: -12,
-          scale: 1,
-          ease: "none",
+      /* the glow trails the pointer across the section */
+      const gx = gsap.quickTo(glow.current, "x", {
+        duration: 1.4,
+        ease: "power3",
+      });
+      const gy = gsap.quickTo(glow.current, "y", {
+        duration: 1.4,
+        ease: "power3",
+      });
+      const onMove = (e) => {
+        const r = section.getBoundingClientRect();
+        gx((e.clientX - r.left - r.width / 2) * 0.45);
+        gy((e.clientY - r.top - r.height / 2) * 0.45);
+      };
+      section.addEventListener("pointermove", onMove, { passive: true });
+
+      /* it breathes even when nothing is moving */
+      const pulse = gsap.to(glow.current, {
+        scale: 1.18,
+        opacity: 0.85,
+        duration: 3.4,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+
+      /* depth: ring and backdrop type drift against the scroll */
+      gsap
+        .timeline({
           scrollTrigger: {
-            trigger: root.current,
+            trigger: section,
             start: "top bottom",
             end: "bottom top",
             scrub: 0.8,
           },
-        },
-      );
+        })
+        .fromTo(
+          q(".cta-ring"),
+          { rotate: -22 },
+          { rotate: 22, ease: "none" },
+          0,
+        )
+        .fromTo(
+          q(".cta-backdrop"),
+          { yPercent: 12 },
+          { yPercent: -12, ease: "none" },
+          0,
+        );
 
-      gsap.fromTo(
-        q(".cta-glow"),
-        { scale: 0.7, opacity: 0.4 },
-        {
-          scale: 1.15,
-          opacity: 0.9,
-          ease: "none",
-          scrollTrigger: {
-            trigger: root.current,
-            start: "top bottom",
-            end: "center center",
-            scrub: 1,
-          },
-        },
-      );
+      return () => {
+        section.removeEventListener("pointermove", onMove);
+        pulse.kill();
+      };
     }, root);
 
     return () => ctx.revert();
@@ -54,70 +85,126 @@ export default function Cta() {
     <section
       id="contact"
       ref={root}
-      className="relative scroll-mt-24 overflow-hidden bg-bone py-28 md:py-40"
+      className="relative isolate scroll-mt-24 overflow-hidden bg-ink py-28 text-bone md:py-40"
     >
-      <div className="cta-glow pointer-events-none absolute left-1/2 top-1/2 h-[80vmin] w-[80vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(246,230,188,0.9),transparent_66%)] blur-2xl" />
+      {/* --- atmosphere --- */}
+      <div
+        ref={glow}
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[78vmin] w-[78vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(179,132,31,0.5),rgba(201,80,31,0.16)_45%,transparent_68%)] blur-3xl"
+      />
 
-      <div className="u-shell relative grid items-center gap-14 lg:grid-cols-12">
-        <div className="order-2 lg:order-1 lg:col-span-7">
-          <p className="u-eyebrow mb-6 text-gold">Get started</p>
+      <svg
+        className="cta-ring pointer-events-none absolute left-1/2 top-1/2 h-[120vmin] w-[120vmin] -translate-x-1/2 -translate-y-1/2"
+        viewBox="0 0 400 400"
+        aria-hidden="true"
+      >
+        <circle
+          cx="200"
+          cy="200"
+          r="196"
+          fill="none"
+          stroke="#E7C46B"
+          strokeOpacity="0.16"
+          strokeWidth="0.5"
+          strokeDasharray="1 12"
+        />
+        <circle
+          cx="200"
+          cy="200"
+          r="150"
+          fill="none"
+          stroke="#E7C46B"
+          strokeOpacity="0.08"
+          strokeWidth="0.6"
+        />
+      </svg>
 
+      {/* --- oversized backdrop type --- */}
+      <div className="cta-backdrop pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none opacity-[0.055]">
+        <Marquee speed={52}>
+          {["Discipline", "Structure", "Patience", "Process"].map((w, i) => (
+            <span key={`${w}-${i}`} className="flex shrink-0 items-center px-8">
+              <span className="u-display text-[16vw] leading-none text-bone md:text-[10vw]">
+                {w}
+              </span>
+              <CandleGlyph className="ml-8 h-[6vw] w-[6vw] text-gold-lite md:h-[3.4vw] md:w-[3.4vw]" />
+            </span>
+          ))}
+        </Marquee>
+      </div>
+
+      {/* --- content --- */}
+      <div className="u-shell relative z-10 flex flex-col items-center text-center">
+        <p className="u-eyebrow mb-6 flex items-center gap-3 text-gold-lite">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-rust opacity-70" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-rust" />
+          </span>
+          Enrolling now
+        </p>
+
+        <h2 className="u-display text-bone">
           <Reveal
-            as="h2"
-            className="u-display text-[clamp(2.2rem,12.5vw,3.8rem)] leading-[0.92] lg:text-[clamp(2.8rem,5.6vw,5.6rem)]"
+            as="span"
+            className="block text-[clamp(2.4rem,13vw,4.2rem)] leading-[0.95] lg:text-[clamp(3rem,6.4vw,6.4rem)]"
           >
-            Create your trading account.
+            Stop guessing.
           </Reveal>
           <MaskUp
-            className="mt-1"
-            innerClassName="u-display u-foil pb-[0.12em] text-[clamp(1.8rem,9.5vw,3rem)] italic leading-[1] lg:text-[clamp(2.1rem,4.2vw,4.2rem)]"
-            delay={0.12}
+            className="mt-1 block"
+            innerClassName="u-foil pb-[0.12em] text-[clamp(2rem,10.5vw,3.4rem)] italic leading-[1.02] lg:text-[clamp(2.4rem,5.2vw,5.2rem)]"
+            delay={0.1}
           >
-            Start your trading journey.
+            Start trading with a plan.
           </MaskUp>
+        </h2>
 
-          <p className="mt-8 max-w-xl text-[0.85rem] leading-relaxed text-ink-70 md:text-base">
-            Start with the right foundation. Create your account and get the
-            guidance you need to understand the market, build a clear trading
-            plan, and execute with confidence and discipline.
-          </p>
+        <p className="mt-8 max-w-xl text-[0.9rem] leading-relaxed text-bone/65 md:text-[1.02rem]">
+          Join 25,000+ traders who learned structure, liquidity and risk the
+          disciplined way. Create your account and take the first step today.
+        </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Magnetic strength={0.26}>
-              <a
-                href="https://client.mbfx.co/register?ref=3A52F2"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="u-btn u-btn--solid"
-                data-cursor="grow"
-              >
-                <span>Create account</span>
-              </a>
-            </Magnetic>
-            <Magnetic strength={0.26}>
-              <a
-                href="https://wa.me/919074620945"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="u-btn u-btn--ghost"
-                data-cursor="grow"
-              >
-                <span>Talk on WhatsApp</span>
-              </a>
-            </Magnetic>
-          </div>
-
-          <p className="u-mono mt-6 text-[0.62rem] tracking-widest text-ink-45">
-            KOCHI, KERALA · ONLINE & OFFLINE TRAINING
-          </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <Magnetic strength={0.28}>
+            <a
+              href="https://client.mbfx.co/register?ref=3A52F2"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="u-btn border-gold bg-gold text-ink"
+              data-cursor="grow"
+            >
+              <span>Create your account</span>
+            </a>
+          </Magnetic>
+          <Magnetic strength={0.28}>
+            <a
+              href="https://wa.me/919074620945"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="u-btn border-white/25 text-bone"
+              data-cursor="grow"
+            >
+              <span>Talk to a mentor</span>
+            </a>
+          </Magnetic>
         </div>
 
-        <div className="order-1 flex justify-center lg:order-2 lg:col-span-5">
-          <LogoOrb
-            id="cta"
-            className="cta-fox h-[52vw] w-[52vw] max-h-[440px] max-w-[440px] lg:h-[30vw] lg:w-[30vw]"
-          />
-        </div>
+        {/* --- reassurance strip --- */}
+        <ul className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-white/10 pt-8">
+          {PROOF.map((p) => (
+            <li
+              key={p}
+              className="u-mono flex items-center gap-2 text-[0.58rem] uppercase tracking-[0.16em] text-bone/45"
+            >
+              <span className="h-1 w-1 rounded-full bg-gold-lite/70" />
+              {p}
+            </li>
+          ))}
+        </ul>
+
+        <p className="u-mono mt-6 text-[0.58rem] leading-relaxed tracking-[0.14em] text-bone/30">
+          TRADING INVOLVES RISK. NO RETURNS ARE GUARANTEED.
+        </p>
       </div>
     </section>
   );

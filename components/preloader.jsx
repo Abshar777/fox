@@ -22,6 +22,7 @@ export default function Preloader() {
     const ctx = gsap.context((self) => {
       const q = self.selector;
       const count = { v: 0 };
+      let lastCount = -1;
 
       /* --- one continuous pen tracing the whole outline ---
          The runs are contiguous, so playing them back to back at a constant
@@ -32,6 +33,23 @@ export default function Preloader() {
       const lens = runs.map((r) => r.getTotalLength());
       const total = lens.reduce((a, b) => a + b, 0) || 1;
       const DRAW = 2.1;
+
+      // getPointAtLength is a synchronous geometry query and was being called
+      // once per frame per run — the main cause of jank on phones. Sample each
+      // run once up front instead and index the table while animating.
+      const STEPS = 64;
+      const penTable = runs.map((run, i) => {
+        const xy = new Float32Array((STEPS + 1) * 2);
+        for (let k = 0; k <= STEPS; k++) {
+          const pt = run.getPointAtLength((lens[i] * k) / STEPS);
+          xy[k * 2] = pt.x;
+          xy[k * 2 + 1] = pt.y;
+        }
+        return xy;
+      });
+      // direct attribute write: no GSAP attr plugin re-parsing every frame
+      const movePen = (x, y) =>
+        pen && pen.setAttribute("transform", `translate(${x} ${y})`);
 
       // Apply every hidden state now, inside the layout effect, rather than as
       // the timeline's first tween — a timeline only renders on its first tick,
@@ -51,11 +69,9 @@ export default function Preloader() {
             duration: DRAW * (lens[i] / total),
             ease: "none",
             onUpdate() {
-              if (!pen) return;
-              const pt = run.getPointAtLength(this.progress() * lens[i]);
-              gsap.set(pen, {
-                attr: { transform: `translate(${pt.x} ${pt.y})` },
-              });
+              const k = (this.progress() * STEPS) | 0;
+              const xy = penTable[i];
+              movePen(xy[k * 2], xy[k * 2 + 1]);
             },
           },
         );
@@ -78,10 +94,10 @@ export default function Preloader() {
             duration: DRAW + 0.3,
             ease: "power1.inOut",
             onUpdate: () => {
-              if (counter.current) {
-                counter.current.textContent = String(
-                  Math.round(count.v),
-                ).padStart(3, "0");
+              const v = Math.round(count.v);
+              if (counter.current && v !== lastCount) {
+                lastCount = v;
+                counter.current.textContent = String(v).padStart(3, "0");
               }
             },
           },
@@ -170,7 +186,7 @@ export default function Preloader() {
         {Array.from({ length: COLUMNS }).map((_, i) => (
           <div
             key={i}
-            className="pl-col h-full flex-1 origin-top bg-bone [transform:scaleY(1)]"
+            className="pl-col h-full flex-1 origin-top bg-bone [transform:scaleY(1)] [will-change:transform]"
           />
         ))}
       </div>
