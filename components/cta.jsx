@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { gsap, useIsoLayoutEffect, REDUCED } from "@/lib/gsap";
 import { Reveal, Magnetic, MaskUp } from "./ui";
-import FoxHead from "./fox-head";
+import LogoOrb from "./logo-orb";
 
 export default function Cta() {
   const root = useRef(null);
@@ -113,7 +113,7 @@ export default function Cta() {
         </div>
 
         <div className="order-1 flex justify-center lg:order-2 lg:col-span-5">
-          <FoxHead
+          <LogoOrb
             id="cta"
             className="cta-fox h-[52vw] w-[52vw] max-h-[440px] max-w-[440px] lg:h-[30vw] lg:w-[30vw]"
           />

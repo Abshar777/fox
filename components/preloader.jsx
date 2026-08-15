@@ -123,6 +123,12 @@ export default function Preloader() {
         // exit
         .to(q(".pl-meta"), { yPercent: -110, duration: 0.6 }, "+=0.15")
         .to(q(".pl-fox"), { yPercent: -30, autoAlpha: 0, duration: 0.6 }, "<")
+        // the rail has to go too, or it stays painted over the revealed page
+        .to(
+          q(".pl-rail"),
+          { scaleX: 0, autoAlpha: 0, duration: 0.5, ease: "power2.inOut" },
+          "<",
+        )
         .to(
           q(".pl-col"),
           {
@@ -156,7 +162,7 @@ export default function Preloader() {
   return (
     <div
       ref={root}
-      className="fixed inset-0 z-[200] flex items-center justify-center"
+      className="pointer-events-none fixed inset-0 z-[200] flex items-center justify-center"
       aria-hidden="true"
     >
       {/* curtain columns */}
@@ -191,7 +197,7 @@ export default function Preloader() {
       </div>
 
       <div className="u-shell absolute inset-x-0 bottom-0 z-10 pb-8">
-        <div className="mb-5 h-px w-full bg-[var(--rule)]">
+        <div className="pl-rail mb-5 h-px w-full origin-right bg-[var(--rule)]">
           <div className="pl-bar h-px w-full origin-left bg-gold" />
         </div>
         <div className="flex items-end justify-between">

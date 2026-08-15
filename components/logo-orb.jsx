@@ -2,19 +2,15 @@
 
 import { useRef } from "react";
 import { gsap, useIsoLayoutEffect, REDUCED } from "@/lib/gsap";
-import {
-  FoxDefs,
-  FoxLayerHead,
-  FoxLayerMuzzle,
-  FoxLayerSnout,
-} from "./fox-art";
+import { LogoSvgSolid } from "./logo-svg";
 
 /**
- * Depth-layered crest. Each facet group sits on its own Z plane inside a
- * preserve-3d stage, so rotating the stage produces real parallax between
- * ears, muzzle and snout. Yaws toward the pointer and breathes when idle.
+ * The crest on a depth stage. Halo and orbit rings sit behind the mark on
+ * their own Z planes, so tilting the stage toward the pointer gives real
+ * parallax. A gold gloss sweeps across the mark on a loop, clipped to the
+ * silhouette so it only ever lights the crest itself.
  */
-export default function FoxHead({ className = "", id = "hero" }) {
+export default function LogoOrb({ className = "", id = "orb" }) {
   const stage = useRef(null);
   const inner = useRef(null);
 
@@ -22,7 +18,25 @@ export default function FoxHead({ className = "", id = "hero" }) {
     const box = inner.current;
     if (!box || REDUCED()) return;
 
-    const ctx = gsap.context(() => {
+    const ctx = gsap.context((self) => {
+      const q = self.selector;
+
+      /* --- looping gloss --- */
+      const sheen = q(".logo-sheen")[0];
+      let gloss;
+      if (sheen) {
+        gloss = gsap
+          .timeline({ repeat: -1, repeatDelay: 2.6 })
+          .set(sheen, { attr: { x: -170 }, opacity: 1 })
+          .to(sheen, {
+            attr: { x: 420 },
+            duration: 1.5,
+            ease: "power2.inOut",
+          })
+          .set(sheen, { opacity: 0 });
+      }
+
+      /* --- pointer tilt --- */
       const rotY = gsap.quickTo(box, "rotationY", {
         duration: 1.1,
         ease: "power3",
@@ -35,8 +49,8 @@ export default function FoxHead({ className = "", id = "hero" }) {
       const onMove = (e) => {
         const nx = (e.clientX / window.innerWidth) * 2 - 1;
         const ny = (e.clientY / window.innerHeight) * 2 - 1;
-        rotY(nx * 24);
-        rotX(-ny * 14);
+        rotY(nx * 22);
+        rotX(-ny * 13);
       };
       const onLeave = () => {
         rotY(0);
@@ -58,6 +72,7 @@ export default function FoxHead({ className = "", id = "hero" }) {
         window.removeEventListener("pointermove", onMove);
         document.removeEventListener("pointerleave", onLeave);
         float.kill();
+        gloss?.kill();
       };
     }, stage);
 
@@ -69,12 +84,12 @@ export default function FoxHead({ className = "", id = "hero" }) {
   return (
     <div ref={stage} className={`fox-stage ${className}`}>
       <div ref={inner} className="fox-3d relative h-full w-full">
-        {/* back plane: halo */}
+        {/* halo */}
         <div
           className="fox-layer absolute inset-0 grid place-items-center"
           style={plane(-140)}
         >
-          <div className="h-[86%] w-[86%] rounded-full bg-[radial-gradient(circle_at_50%_40%,rgba(246,230,188,0.95),rgba(233,223,201,0.35)_55%,transparent_72%)]" />
+          <div className="h-[88%] w-[88%] rounded-full bg-[radial-gradient(circle_at_50%_40%,rgba(246,230,188,0.95),rgba(233,223,201,0.35)_55%,transparent_72%)]" />
         </div>
 
         {/* orbit rings */}
@@ -113,45 +128,20 @@ export default function FoxHead({ className = "", id = "hero" }) {
 
         {/* ground shadow */}
         <div
-          className="fox-layer absolute inset-x-[18%] bottom-[6%] h-6 rounded-[50%] bg-ink/25 blur-xl"
+          className="fox-layer absolute inset-x-[22%] bottom-[10%] h-6 rounded-[50%] bg-ink/20 blur-xl"
           style={plane(-160)}
         />
 
-        {/* head plane */}
-        <svg
-          viewBox="0 0 400 400"
-          className="fox-layer absolute inset-0 h-full w-full drop-shadow-[0_30px_45px_rgba(20,16,11,0.22)]"
-          style={plane(0)}
-        >
-          <FoxDefs id={id} />
-          <FoxLayerHead id={id} />
-        </svg>
-
-        {/* muzzle plane */}
-        <svg
-          viewBox="0 0 400 400"
-          className="fox-layer absolute inset-0 h-full w-full"
-          style={plane(34)}
-        >
-          <FoxDefs id={`${id}-m`} />
-          <FoxLayerMuzzle id={`${id}-m`} />
-        </svg>
-
-        {/* snout plane */}
-        <svg
-          viewBox="0 0 400 400"
-          className="fox-layer absolute inset-0 h-full w-full"
-          style={plane(62)}
-        >
-          <FoxLayerSnout />
-        </svg>
-
-        {/* specular sheen */}
+        {/* the crest */}
         <div
-          className="fox-layer pointer-events-none absolute inset-0 mix-blend-overlay"
-          style={plane(88)}
+          className="fox-layer absolute inset-0 grid place-items-center"
+          style={plane(30)}
         >
-          <div className="h-full w-full bg-[linear-gradient(115deg,transparent_38%,rgba(255,255,255,0.55)_47%,transparent_56%)]" />
+          <LogoSvgSolid
+            id={id}
+            sheen
+            className="h-[72%] w-[72%] drop-shadow-[0_24px_40px_rgba(20,16,11,0.28)]"
+          />
         </div>
       </div>
     </div>
