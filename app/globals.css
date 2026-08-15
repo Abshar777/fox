@@ -1,26 +1,478 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   FOX ACADEMY — Design tokens
+   Aesthetic: editorial luxury / precision instrument.
+   Warm bone paper, foil gold, espresso ink, one rust accent.
+   ============================================================ */
+
+@theme {
+  --color-bone: #f4efe4;
+  --color-paper: #fbf8f1;
+  --color-sand: #e9dfc9;
+  --color-sand-deep: #ddd0b4;
+  --color-ink: #14100b;
+  --color-ink-70: #443c31;
+  --color-ink-45: #7a7060;
+  --color-gold: #b3841f;
+  --color-gold-lite: #e7c46b;
+  --color-gold-pale: #f6e6bc;
+  --color-gold-deep: #7d5a10;
+  --color-rust: #c9501f;
+
+  --font-display: var(--font-display-f), ui-serif, Georgia, serif;
+  --font-sans: var(--font-sans-f), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-f), ui-monospace, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-swift: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --gutter: clamp(1.25rem, 4vw, 5rem);
+    --rule: color-mix(in srgb, var(--color-ink) 14%, transparent);
+    --rule-soft: color-mix(in srgb, var(--color-ink) 8%, transparent);
+    --foil: linear-gradient(
+      100deg,
+      #8c6318 0%,
+      #b3841f 18%,
+      #f0d58c 38%,
+      #e7c46b 50%,
+      #a87c1c 66%,
+      #d8b355 84%,
+      #8c6318 100%
+    );
+  }
+
+  * {
+    min-width: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body.is-loading {
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-gold-lite);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-sand);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gold);
+    border-radius: 99px;
+  }
+
+  /* Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ============================================================
+   Components — layered so Tailwind utilities always win
+   ============================================================ */
+
+@layer components {
+  /* ---------- typography primitives ---------- */
+
+  .u-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 0.86;
+    letter-spacing: -0.03em;
+  }
+
+  .u-eyebrow {
+    font-family: var(--font-mono);
+    font-size: clamp(0.62rem, 0.75vw, 0.72rem);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .u-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .u-foil {
+    background: var(--foil);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: foil-drift 9s linear infinite;
+  }
+
+  /* ---------- layout helpers ---------- */
+
+  .u-shell {
+    padding-inline: var(--gutter);
+    max-width: 1680px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .u-rule {
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ---------- surfaces & texture ---------- */
+
+  .u-grain {
+    position: fixed;
+    inset: -50%;
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0.3;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    animation: grain-shift 0.6s steps(3) infinite;
+  }
+
+  .u-vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 89;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    background: radial-gradient(
+      120% 80% at 50% 30%,
+      #fff 48%,
+      color-mix(in srgb, var(--color-sand-deep) 72%, #fff) 100%
+    );
+  }
+
+  .u-hatch {
+    background-image: repeating-linear-gradient(
+      45deg,
+      color-mix(in srgb, var(--color-gold) 22%, transparent) 0 1px,
+      transparent 1px 7px
+    );
+  }
+
+  .u-card {
+    background: var(--color-paper);
+    border: 1px solid var(--rule);
+    box-shadow:
+      0 1px 0 color-mix(in srgb, #fff 80%, transparent) inset,
+      0 24px 60px -40px color-mix(in srgb, var(--color-ink) 55%, transparent);
+  }
+
+  /* ---------- controls ---------- */
+
+  .u-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7em;
+    padding: 1.05em 1.9em;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+    overflow: hidden;
+    isolation: isolate;
+    will-change: transform;
+    border: 1px solid var(--color-ink);
+  }
+
+  .u-btn > span {
+    position: relative;
+    z-index: 2;
+    transition: color 0.5s var(--ease-out-expo);
+  }
+
+  .u-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--foil);
+    background-size: 200% 100%;
+    transform: translateY(101%);
+    transition: transform 0.62s var(--ease-out-expo);
+  }
+
+  .u-btn:hover::after {
+    transform: translateY(0);
+  }
+
+  .u-btn--solid {
+    background: var(--color-ink);
+    color: var(--color-gold-pale);
+  }
+  .u-btn--solid:hover > span {
+    color: var(--color-ink);
+  }
+
+  .u-btn--ghost {
+    color: var(--color-ink);
+  }
+  .u-btn--ghost:hover > span {
+    color: var(--color-ink);
+  }
+
+  .u-link {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 2px;
+  }
+  .u-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s var(--ease-out-expo);
+  }
+  .u-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* vertical roll-over label */
+  .u-roll {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    height: 1.15em;
+    line-height: 1.15em;
+  }
+  .u-roll span {
+    display: block;
+    height: 1.15em;
+    line-height: 1.15em;
+    transition: transform 0.55s var(--ease-out-expo);
+  }
+  .u-roll span::after {
+    content: attr(data-t);
+    display: block;
+    height: 1.15em;
+    line-height: 1.15em;
+    color: var(--color-gold);
+  }
+  .u-roll:hover span,
+  a:hover .u-roll span,
+  button:hover .u-roll span {
+    transform: translateY(-100%);
+  }
+
+  /* ---------- reveal primitives (GSAP drives these) ---------- */
+
+  .js-mask {
+    overflow: hidden;
+    display: block;
+  }
+
+  /* Only hide pre-animation content when JS is alive to reveal it again —
+     otherwise a script failure would leave headings permanently invisible. */
+  [data-js] .js-fade {
+    opacity: 0;
+  }
+
+  [data-js] [data-split] {
+    visibility: hidden;
+  }
+  [data-js] [data-split].is-ready {
+    visibility: visible;
+  }
+
+  /* ---------- cursor ---------- */
+
+  .u-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    will-change: transform;
+  }
+
+  .u-cursor__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-gold-pale);
+    transform: translate(-50%, -50%);
+  }
+
+  .u-cursor__ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    pointer-events: none;
+    width: 44px;
+    height: 44px;
+    margin: -22px 0 0 -22px;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--color-ink) 45%, transparent);
+    will-change: transform;
+  }
+
+  .u-cursor__label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0;
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    white-space: nowrap;
+    transition:
+      opacity 0.3s,
+      transform 0.4s var(--ease-out-expo);
+  }
+
+  /* ---------- marquee ---------- */
+
+  .u-marquee {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+
+  /* ---------- fox ---------- */
+
+  .fox-stage {
+    perspective: 1100px;
+    perspective-origin: 50% 45%;
+  }
+
+  .fox-3d {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  .fox-layer {
+    transform-style: preserve-3d;
+  }
+
+  .fox-orbit {
+    animation: fox-spin 34s linear infinite;
+  }
+  .fox-orbit-rev {
+    animation: fox-spin 18s linear infinite reverse;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .u-cursor,
+  .u-cursor__ring {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Keyframes
+   ============================================================ */
+
+@keyframes foil-drift {
+  to {
+    background-position: 220% 0;
+  }
+}
+
+@keyframes grain-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(-2%, 1.5%);
+  }
+  66% {
+    transform: translate(1.5%, -1%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes fox-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scrollcue {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+@keyframes tick-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* ============================================================
+   Accessibility
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js-fade,
+  [data-split] {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
 }
