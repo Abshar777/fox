@@ -105,7 +105,7 @@ export default function Cta() {
               cy="200"
               r="196"
               fill="none"
-              stroke="#E7C46B"
+              stroke="var(--color-gold-lite)"
               strokeOpacity="0.14"
               strokeWidth="0.5"
               strokeDasharray="1 12"
@@ -115,7 +115,7 @@ export default function Cta() {
               cy="200"
               r="150"
               fill="none"
-              stroke="#E7C46B"
+              stroke="var(--color-gold-lite)"
               strokeOpacity="0.07"
               strokeWidth="0.6"
             />
@@ -151,7 +151,7 @@ export default function Cta() {
                   href="https://client.mbfx.co/register?ref=3A52F2"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="u-btn border-gold bg-gold text-ink"
+                  className="u-btn border-gold bg-gold text-night"
                   data-cursor="grow"
                 >
                   <span>Create your account</span>
@@ -159,10 +159,10 @@ export default function Cta() {
               </Magnetic>
               <Magnetic strength={0.28}>
                 <a
-                  href="https://wa.me/919074620945"
+                  href="https://wa.me/919207790485"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="u-btn border-white/25 text-bone"
+                  className="u-btn border-bone/25 text-bone"
                   data-cursor="grow"
                 >
                   <span>Talk to a mentor</span>
@@ -170,7 +170,7 @@ export default function Cta() {
               </Magnetic>
             </div>
 
-            <ul className="mt-11 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-white/10 pt-7">
+            <ul className="mt-11 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-bone/10 pt-7">
               {PROOF.map((p) => (
                 <li
                   key={p}

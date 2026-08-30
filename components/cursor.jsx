@@ -78,7 +78,10 @@ export default function Cursor() {
       if (!e.target.closest?.("[data-cursor], a, button")) return;
       gsap.to(ring.current, {
         scale: 1,
-        borderColor: "rgba(20,16,11,0.45)",
+        borderColor:
+          getComputedStyle(document.documentElement)
+            .getPropertyValue("--ring-rest")
+            .trim() || "rgba(244,239,228,0.45)",
         backgroundColor: "rgba(0,0,0,0)",
         duration: 0.45,
         ease: "power3.out",

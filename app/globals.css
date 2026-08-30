@@ -3,22 +3,31 @@
 /* ============================================================
    FOX ACADEMY — Design tokens
    Aesthetic: editorial luxury / precision instrument.
-   Warm bone paper, foil gold, espresso ink, one rust accent.
+   Espresso night ground, foil gold, warm bone ink, one rust accent.
+
+   Theming: dark is the default; `:root[data-theme="light"]` below
+   restores the original light palette. The role of each token is
+   relational, not literal — `bone` is always the page ground and
+   `ink` the foreground, and the lite/deep gold pair swaps with the
+   theme so contrast sections keep working in both. `night` never
+   changes: it is for text sitting on gold, which is mid-tone in
+   both themes.
    ============================================================ */
 
 @theme {
-  --color-bone: #f4efe4;
-  --color-paper: #fbf8f1;
-  --color-sand: #e9dfc9;
-  --color-sand-deep: #ddd0b4;
-  --color-ink: #14100b;
-  --color-ink-70: #443c31;
-  --color-ink-45: #7a7060;
-  --color-gold: #b3841f;
-  --color-gold-lite: #e7c46b;
+  --color-bone: #14100b;
+  --color-paper: #1c150d;
+  --color-sand: #261e12;
+  --color-sand-deep: #322718;
+  --color-ink: #f4efe4;
+  --color-ink-70: #c8bdab;
+  --color-ink-45: #8f8577;
+  --color-gold: #c69732;
+  --color-gold-lite: #7d5a10;
   --color-gold-pale: #f6e6bc;
-  --color-gold-deep: #7d5a10;
-  --color-rust: #c9501f;
+  --color-gold-deep: #e7c46b;
+  --color-rust: #e0653a;
+  --color-night: #14100b;
 
   --font-display: var(--font-display-f), ui-serif, Georgia, serif;
   --font-sans: var(--font-sans-f), ui-sans-serif, system-ui, sans-serif;
@@ -43,6 +52,40 @@
       #d8b355 84%,
       #8c6318 100%
     );
+
+    /* theme-adaptive atmosphere (dark defaults) */
+    --grain-blend: screen;
+    --grain-opacity: 0.14;
+    --vignette-edge: color-mix(in srgb, #000 38%, #fff);
+    --hero-glow: rgba(198, 148, 45, 0.13);
+    --card-glint: color-mix(in srgb, #fff 7%, transparent);
+    --card-shadow: color-mix(in srgb, #000 75%, transparent);
+    --ring-rest: rgba(244, 239, 228, 0.45);
+    color-scheme: dark;
+  }
+
+  :root[data-theme="light"] {
+    --color-bone: #f4efe4;
+    --color-paper: #fbf8f1;
+    --color-sand: #e9dfc9;
+    --color-sand-deep: #ddd0b4;
+    --color-ink: #14100b;
+    --color-ink-70: #443c31;
+    --color-ink-45: #7a7060;
+    --color-gold: #b3841f;
+    --color-gold-lite: #e7c46b;
+    --color-gold-pale: #f6e6bc;
+    --color-gold-deep: #7d5a10;
+    --color-rust: #c9501f;
+
+    --grain-blend: multiply;
+    --grain-opacity: 0.3;
+    --vignette-edge: color-mix(in srgb, var(--color-sand-deep) 72%, #fff);
+    --hero-glow: rgba(246, 230, 188, 0.85);
+    --card-glint: color-mix(in srgb, #fff 80%, transparent);
+    --card-shadow: color-mix(in srgb, #14100b 55%, transparent);
+    --ring-rest: rgba(20, 16, 11, 0.45);
+    color-scheme: light;
   }
 
   * {
@@ -69,8 +112,8 @@
   }
 
   ::selection {
-    background: var(--color-ink);
-    color: var(--color-gold-lite);
+    background: var(--color-gold);
+    color: var(--color-night);
   }
 
   :focus-visible {
@@ -158,8 +201,8 @@
     inset: -50%;
     z-index: 90;
     pointer-events: none;
-    opacity: 0.3;
-    mix-blend-mode: multiply;
+    opacity: var(--grain-opacity);
+    mix-blend-mode: var(--grain-blend);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
     animation: grain-shift 0.6s steps(3) infinite;
   }
@@ -173,7 +216,7 @@
     background: radial-gradient(
       120% 80% at 50% 30%,
       #fff 48%,
-      color-mix(in srgb, var(--color-sand-deep) 72%, #fff) 100%
+      var(--vignette-edge) 100%
     );
   }
 
@@ -189,8 +232,8 @@
     background: var(--color-paper);
     border: 1px solid var(--rule);
     box-shadow:
-      0 1px 0 color-mix(in srgb, #fff 80%, transparent) inset,
-      0 24px 60px -40px color-mix(in srgb, var(--color-ink) 55%, transparent);
+      0 1px 0 var(--card-glint) inset,
+      0 24px 60px -40px var(--card-shadow);
   }
 
   /* ---------- controls ---------- */
@@ -236,17 +279,17 @@
 
   .u-btn--solid {
     background: var(--color-ink);
-    color: var(--color-gold-pale);
+    color: var(--color-gold-lite);
   }
   .u-btn--solid:hover > span {
-    color: var(--color-ink);
+    color: var(--color-night);
   }
 
   .u-btn--ghost {
     color: var(--color-ink);
   }
   .u-btn--ghost:hover > span {
-    color: var(--color-ink);
+    color: var(--color-night);
   }
 
   .u-link {
@@ -348,7 +391,7 @@
     height: 44px;
     margin: -22px 0 0 -22px;
     border-radius: 50%;
-    border: 1px solid color-mix(in srgb, var(--color-ink) 45%, transparent);
+    border: 1px solid var(--ring-rest);
     will-change: transform;
   }
 
@@ -362,7 +405,7 @@
     font-size: 0.55rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-ink);
+    color: var(--color-night);
     white-space: nowrap;
     transition:
       opacity 0.3s,

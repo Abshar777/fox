@@ -33,6 +33,11 @@ const QUOTES = [
     n: "Anjali R.",
     m: "Kochi",
   },
+  {
+    q: "Iam working in UAE so, Wolfpack nte online session aan attend cheythath, athil enik ettavum helpful aayath Wolfpack nte AI software aan. Working professionals nu Wolfpack AI Technology is very useful, because AI thanne market analyse cheyth trade cheyyum.",
+    n: "Arjun V.",
+    m: "UAE",
+  },
 ];
 
 function Quote({ q, n, m }) {

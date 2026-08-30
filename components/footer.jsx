@@ -12,18 +12,18 @@ const COLUMNS = [
       ["Home", "#top"],
       ["About us", "#about"],
       ["Programmes", "#programmes"],
-      ["Mentors", "#mentors"],
+      ["Founders", "#founders"],
       ["Contact us", "#contact"],
     ],
   },
   {
     head: "Programmes",
     links: [
-      ["Trading course", "#programmes"],
+      ["Forex Blueprint", "#programmes"],
+      ["Master PowerHouse", "#programmes"],
+      ["Wolfpack Bootcamp", "#programmes"],
       ["Premium community", "#programmes"],
-      ["AI Wolf indicator", "#programmes"],
-      ["Multi account management", "#programmes"],
-      ["Financial advisory", "#programmes"],
+      ["Wolfpack AI", "#programmes"],
     ],
   },
   {
@@ -32,7 +32,7 @@ const COLUMNS = [
       ["Instagram", "https://www.instagram.com/wolfpack_wealth__academy"],
       ["Facebook", "https://www.facebook.com/share/1J1zFfWpY8/"],
       ["YouTube", "https://youtube.com/@wolfpackwealthacademy"],
-      ["WhatsApp", "https://wa.me/919074620945"],
+      ["WhatsApp", "https://wa.me/919207790485"],
     ],
   },
 ];
@@ -87,18 +87,18 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer noopener"
                   data-cursor="grow"
-                  className="u-btn border-gold bg-gold text-ink"
+                  className="u-btn border-gold bg-gold text-night"
                 >
                   <span>Create account</span>
                 </a>
               </Magnetic>
               <Magnetic strength={0.25}>
                 <a
-                  href="https://wa.me/919074620945"
+                  href="https://wa.me/919207790485"
                   target="_blank"
                   rel="noreferrer noopener"
                   data-cursor="grow"
-                  className="u-btn border-white/25 text-bone"
+                  className="u-btn border-bone/25 text-bone"
                 >
                   <span>WhatsApp us</span>
                 </a>
@@ -135,15 +135,31 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <p className="u-eyebrow mb-5 text-bone/35">Reach us</p>
             <a
-              href="https://wa.me/919074620945"
+              href="https://wa.me/919207790485"
               target="_blank"
               rel="noreferrer noopener"
               className="u-mono block text-[0.68rem] leading-relaxed text-bone/60 transition-colors hover:text-gold-lite"
             >
-              +91 90746 20945
+              +91 92077 90485
+            </a>
+            <a
+              href="tel:+916238188112"
+              className="u-mono mt-1.5 block text-[0.68rem] leading-relaxed text-bone/60 transition-colors hover:text-gold-lite"
+            >
+              +91 62381 88112
+            </a>
+            <a
+              href="mailto:info@wolfpackwealthacademy.com"
+              className="u-mono mt-1.5 block break-all text-[0.68rem] leading-relaxed text-bone/60 transition-colors hover:text-gold-lite"
+            >
+              info@wolfpackwealthacademy.com
             </a>
             <p className="u-mono mt-3 text-[0.68rem] leading-relaxed text-bone/60">
-              Kochi, Kerala
+              Door no. 39/2501-A, Perayil Annexe,
+              <br />
+              RBI Lane, South Janatha Road,
+              <br />
+              Palarivattom, Kochi — 682032
               <br />
               Online &amp; offline
             </p>
@@ -151,7 +167,7 @@ export default function Footer() {
         </div>
 
         {/* legal */}
-        <div className="flex flex-col gap-6 border-t border-white/12 py-8 md:flex-row md:items-start md:justify-between">
+        <div className="flex flex-col gap-6 border-t border-bone/12 py-8 md:flex-row md:items-start md:justify-between">
           <p className="u-mono max-w-2xl text-[0.58rem] leading-relaxed text-bone/35">
             Wolfpack Wealth Academy provides trading education, tools and
             mentorship. Trading in foreign exchange, gold and crypto carries a
@@ -176,9 +192,9 @@ export default function Footer() {
         </p>
       </div>
 
-      <div className="u-shell flex items-center justify-between border-t border-white/10 py-5">
+      <div className="u-shell flex items-center justify-between border-t border-bone/10 py-5">
         <p className="u-mono text-[0.58rem] tracking-widest text-bone/30">
-          © 2026 WOLFPACK WEALTH ACADEMY
+          © 2026 WOLFPACK WEALTH ACADEMY · POWERED BY LIMETEA
         </p>
         <a
           href="#top"

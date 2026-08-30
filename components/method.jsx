@@ -7,34 +7,50 @@ import { Reveal, SectionHead } from "./ui";
 const PILLARS = [
   {
     n: "01",
-    title: "Market structure",
+    title: "Structured trading framework",
     lead: "Structure before opinion.",
-    body: "Every chart is an auction between two impatient crowds. You learn to read structure and price action so a setup becomes something you recognise, not something you hope for.",
-    tags: ["Market structure", "Price action", "Higher timeframe reads"],
+    body: "Market structure, liquidity and price action, taught step by step — so a setup becomes something you recognise, not something you hope for.",
+    tags: ["Market structure", "Liquidity", "Price action"],
     art: "structure",
   },
   {
     n: "02",
-    title: "Liquidity & flow",
-    lead: "Trade where the fuel is.",
-    body: "Price moves to where orders rest. We map liquidity and walk through live market analysis and trade reviews, so you see the read applied to a real chart rather than a slide.",
-    tags: ["Liquidity", "Live analysis", "Trade reviews"],
+    title: "Wolfpack AI market intelligence",
+    lead: "Insight, on tap.",
+    body: "Our proprietary AI scans the Gold and Forex markets, detects patterns and delivers actionable insights that complement your own analysis.",
+    tags: ["Gold & Forex scans", "Pattern detection", "Actionable insights"],
     art: "liquidity",
   },
   {
     n: "03",
-    title: "Risk & psychology",
-    lead: "Capital protection before profits.",
-    body: "A good idea taken at the wrong size is a losing idea. Risk management and trading psychology sessions build the discipline that keeps you in the market long enough to compound.",
-    tags: ["Risk management", "Position sizing", "Trading psychology"],
-    art: "risk",
+    title: "Live mentorship & trade reviews",
+    lead: "Real traders, real feedback.",
+    body: "Real traders review your journal and refine your strategy, online or offline — live analysis, trade reviews and one to one doubt clearing.",
+    tags: ["Journal reviews", "Live analysis", "1:1 doubt clearing"],
+    art: "loop",
   },
   {
     n: "04",
-    title: "Community & review",
+    title: "Risk management & psychology",
+    lead: "Capital protection before profits.",
+    body: "Learn position sizing, capital protection and the mindset required to trade with discipline and consistency.",
+    tags: ["Position sizing", "Capital protection", "Trading psychology"],
+    art: "risk",
+  },
+  {
+    n: "05",
+    title: "Hands-on practical training",
+    lead: "Theory meets the live chart.",
+    body: "Apply your knowledge through live market analysis, real time trading exercises and guided sessions that bridge theory with practical execution.",
+    tags: ["Live market analysis", "Trading exercises", "Guided sessions"],
+    art: "structure",
+  },
+  {
+    n: "06",
+    title: "The Wolfpack community",
     lead: "The edge is in the loop.",
-    body: "Learning does not stop at the last class. Market discussions, journal reviews and continuous mentorship inside the Wolfpack community turn scattered trades into a measurable process.",
-    tags: ["Journal reviews", "Mentorship", "Accountability"],
+    body: "24/7 support, market updates and psychology sessions with serious traders across Kerala — learning that continues long after the last class.",
+    tags: ["24/7 support", "Market updates", "Psychology sessions"],
     art: "loop",
   },
 ];
@@ -365,7 +381,7 @@ export default function Method() {
           as="h2"
           className="u-display mt-10 max-w-4xl text-[clamp(2rem,10vw,3.4rem)] leading-[0.95] lg:text-[clamp(2.6rem,5vw,4.6rem)]"
         >
-          Everything we teach hangs on four pillars.
+          Everything we teach hangs on six pillars.
         </Reveal>
       </div>
 
@@ -379,7 +395,7 @@ export default function Method() {
             <article className="u-card grid content-center gap-8 rounded-[2px] p-7 md:min-h-[56vh] md:grid-cols-12 md:gap-10 md:p-14">
               <div className="md:col-span-4">
                 <p className="u-mono text-[0.68rem] tracking-[0.2em] text-gold">
-                  {p.n} / 04
+                  {p.n} / 06
                 </p>
                 <h3 className="u-display mt-4 text-[clamp(1.9rem,9vw,2.8rem)] leading-[0.98] md:text-[clamp(1.8rem,3.2vw,3rem)]">
                   {p.title}

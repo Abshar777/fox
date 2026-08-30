@@ -12,13 +12,14 @@ import { TrendGlyph } from "./icons";
 const PROGRAMMES = [
   {
     n: "01",
-    name: "Trading Course",
-    line: "Build the skills, confidence and discipline to trade the markets through structured Forex education, expert mentorship and practical real market experience.",
+    name: "Forex Blueprint",
+    line: "The beginner course · 10–15 days · online & offline. Designed for complete beginners who want to learn forex and gold trading the right way — with structure, discipline and the risk-first mindset of the top 5% of traders.",
     features: [
-      "Structured curriculum for all levels",
-      "Market structure, liquidity & price action",
-      "Live market analysis and trade reviews",
-      "Trading psychology & risk management",
+      "Market basics: currency markets, sessions & pairs",
+      "Gold trading: XAU/USD behaviour & strategy",
+      "Technical analysis: candlesticks & key levels",
+      "Risk management: position sizing & capital protection",
+      "Psychology: controlling the emotions that destroy traders",
     ],
     cta: "Explore the course",
     size: "hero",
@@ -26,45 +27,62 @@ const PROGRAMMES = [
   },
   {
     n: "02",
-    name: "Premium Community",
-    line: "An exclusive trading community for daily signals, expert insights, live discussions and continued mentorship.",
+    name: "Master PowerHouse",
+    line: "Intermediate to advanced · 30–40 days · online & offline. You've learned the basics — now learn what the institutions know: liquidity, institutional order flow and advanced price action.",
     features: [
-      "Daily signals & market commentary",
-      "Live discussion rooms",
-      "Mentorship after the course",
-      "Journal reviews & accountability",
+      "Institutional concepts: aligning with banks and funds",
+      "Liquidity analysis: identifying stop hunts & traps",
+      "Advanced price action: trading without indicators",
+      "Trade management: partials, trailing and scaling",
+      "High probability setups for Gold & Forex",
     ],
-    cta: "Join the community",
+    cta: "Level up",
     size: "wide",
     span: "lg:col-span-2",
   },
   {
     n: "03",
-    name: "AI Wolf Indicator",
-    line: "Spot high probability opportunities and make smarter, data driven decisions.",
-    cta: "See the indicator",
+    name: "Premium Community",
+    line: "A live trading community for daily signals, expert insights, market discussions and continued mentorship.",
+    cta: "Join the community",
     size: "small",
     span: "lg:col-span-1",
   },
   {
     n: "04",
-    name: "Financial Advisory",
-    line: "Personalised guidance to build a clear strategy and pursue long term growth.",
-    cta: "Request a call",
+    name: "Wolfpack AI Technology",
+    line: "Our proprietary AI scans gold & forex markets, detects patterns and delivers actionable insights — built for busy professionals.",
+    cta: "Explore Wolfpack AI",
     size: "small",
     span: "lg:col-span-1",
   },
   {
     n: "05",
-    name: "Multi Account Management",
-    line: "Experienced professionals manage your trading with a disciplined, transparent and risk focused approach.",
+    name: "Wolfpack Bootcamp",
+    line: "Live trading mentorship in Kochi. Courses teach you concepts — the Wolfpack Bootcamp makes you a trader, bridging the gap between learning and actual market participation.",
     features: [
-      "Account stays in your name",
-      "Trading access only, never your deposits or withdrawals",
-      "Monitor your account activity at any time",
-      "Capital protection before profits",
+      "Community access: trade alongside serious traders across Kerala",
+      "Live market analysis: watch professionals break down live movements",
+      "Trade journal review: mentors audit your actual performance",
+      "Trading psychology: build the discipline of the top 5%",
+      "1-on-1 doubt clearing: personal guidance, not generic webinars",
+      "Strategy refinement: continuously improve your personal edge",
     ],
-    cta: "Ask about MAM",
+    cta: "Join the Bootcamp",
+    size: "banner",
+    span: "lg:col-span-4",
+  },
+  {
+    n: "06",
+    name: "Wealth Creation · The 5% Club",
+    line: "Our wealth creation circle for the disciplined few — traders committed to compounding capital patiently instead of chasing quick wins.",
+    features: [
+      "Long term wealth building framework",
+      "Compounding & capital allocation guidance",
+      "Direct access to senior mentors",
+      "Accountability inside a private circle",
+    ],
+    cta: "Ask about the 5% Club",
     size: "banner",
     span: "lg:col-span-4",
   },
@@ -122,7 +140,7 @@ function Tile({ t }) {
         {t.features && (
           <ul
             className={`mt-7 space-y-3 border-t pt-6 ${
-              dark ? "border-white/15" : "border-[var(--rule)]"
+              dark ? "border-bone/15" : "border-[var(--rule)]"
             } ${banner ? "lg:mt-0 lg:grid lg:flex-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-3 lg:space-y-0 lg:border-l lg:border-t-0 lg:pl-14 lg:pt-0" : ""}`}
           >
             {t.features.map((f) => (
@@ -157,7 +175,7 @@ function Tile({ t }) {
               href="#contact"
               data-cursor="grow"
               className={`u-btn ${
-                dark ? "border-gold bg-gold text-ink" : "u-btn--ghost"
+                dark ? "border-gold bg-gold text-night" : "u-btn--ghost"
               }`}
             >
               <span>{t.cta}</span>
@@ -180,11 +198,13 @@ export default function Pricing() {
             as="h2"
             className="u-display max-w-2xl text-[clamp(2.1rem,11vw,3.4rem)] leading-[0.95] md:text-[clamp(2.4rem,4.8vw,4.6rem)]"
           >
-            Everything you need to trade, grow and move forward.
+            Choose your path.
           </Reveal>
           <p className="max-w-sm text-[0.82rem] leading-relaxed text-ink-70 md:text-sm">
-            Five ways to work with Wolfpack, from your first structured course
-            through to managed accounts and long term advisory.
+            Whether you are starting from zero or looking to scale your
+            portfolio, we have a blueprint for your success — from your first
+            structured course through to live mentorship, AI powered trading
+            and long term wealth creation.
           </p>
         </div>
 

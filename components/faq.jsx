@@ -5,28 +5,28 @@ import { Reveal, SectionHead } from "./ui";
 
 const ITEMS = [
   {
-    q: "Is MAM account management safe? What if I lose money?",
-    a: "Safety comes first at Wolfpack. With MAM your account stays in your name, and we only receive trading access, with no access to your deposits or withdrawals. You can monitor your account activity at any time while our team focuses on disciplined execution and risk management. Our rule is capital protection before profits. Trading always involves risk and no returns can be guaranteed.",
+    q: "Why is Wolfpack Wealth Academy considered a leading Forex Trading Institute in Kochi?",
+    a: "Wolfpack Wealth Academy is a leading Forex Trading Institute in Kochi, offering structured Forex and Gold trading courses, live market training, expert mentorship, AI-powered insights, risk management education and continuous support to help traders build confidence, discipline and long-term trading skills.",
   },
   {
-    q: "Do you guarantee 5 to 10% profit every month?",
+    q: "Who can join this Forex Trading Institute?",
+    a: "Our courses are designed for beginners, working professionals, students and experienced traders who want to strengthen their understanding of Forex and Gold trading through practical learning. Both online and offline options are available.",
+  },
+  {
+    q: "What makes Wolfpack Wealth Academy different from other trading institutes?",
+    a: "We focus on institutional trading concepts, risk management, live market analysis, AI-powered market intelligence and a supportive trading community instead of relying on theory alone.",
+  },
+  {
+    q: "Does Wolfpack Wealth Academy provide practical trading experience?",
+    a: "Yes. You apply your knowledge through live market analysis, real-time trading exercises and guided sessions that bridge theory with practical execution, and mentors review your trade journal as you go.",
+  },
+  {
+    q: "Do you guarantee monthly profits?",
     a: "No. Any programme promising guaranteed monthly returns is not being honest with you. Trading always involves risk, and our focus is responsible risk management, transparency and long term consistency rather than unrealistic promises.",
   },
   {
-    q: "How is Wolfpack different from other trading courses?",
-    a: "Most courses hand you strategies. We teach a structured framework: market structure, liquidity, price action, risk management and trading psychology, and then keep supporting you through live analysis, trade reviews and a community that continues long after the course ends.",
-  },
-  {
-    q: "Do I need prior trading experience to join?",
-    a: "None at all. Our curriculum is designed for every experience level, and complete beginners start each cohort. If you have traded before, the structured approach will help you replace scattered habits with a repeatable process.",
-  },
-  {
-    q: "What do I get with Premium Community Membership?",
-    a: "Daily signals, expert market insights, live discussions and continued mentorship, plus the market discussions and journal reviews that keep your process sharp between sessions.",
-  },
-  {
-    q: "Can I learn online, or do I need to be in Kochi?",
-    a: "Both work. We run a professional learning environment in Kochi with offline training, and our online sessions are fully interactive, and students join from across Kerala and the UAE.",
+    q: "Where is Wolfpack Wealth Academy located?",
+    a: "Wolfpack Wealth Academy is a professional Forex Trading Institute located in Palarivattom, Kochi, Kerala, offering both online and offline training for students across Kerala, India and the Gulf region.",
   },
 ];
 
@@ -51,12 +51,12 @@ export default function Faq() {
               salesperson, answers every enquiry.
             </p>
             <a
-              href="https://wa.me/919074620945"
+              href="https://wa.me/919207790485"
               target="_blank"
               rel="noreferrer noopener"
               className="u-link u-display mt-4 inline-block text-xl text-gold-deep"
             >
-              +91 90746 20945
+              +91 92077 90485
             </a>
           </div>
 

@@ -4,13 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger, useIsoLayoutEffect } from "@/lib/gsap";
 import { LogoMark, LogoFull } from "./logo";
 import { Magnetic } from "./ui";
+import ThemeToggle from "./theme-toggle";
 
 const LINKS = [
   { href: "#about", label: "About us" },
-  { href: "#curriculum", label: "Course" },
-  { href: "#desk", label: "Live desk" },
-  { href: "#mentors", label: "Mentors" },
-  { href: "#programmes", label: "Programmes" },
+  { href: "#programmes", label: "Course" },
+  { href: "#founders", label: "Founders" },
+  { href: "#contact", label: "Contact us" },
 ];
 
 /* live London clock — renders a stable placeholder for SSR */
@@ -246,6 +246,8 @@ export default function Nav() {
                 <Clock />
               </span>
 
+              <ThemeToggle />
+
               <Magnetic strength={0.25}>
                 <a
                   href="#contact"
@@ -296,7 +298,7 @@ export default function Nav() {
           <div className="u-shell relative flex h-full flex-col justify-center pb-12 pt-24">
             <nav className="flex flex-col">
               {LINKS.map((l) => (
-                <div key={l.href} className="js-mask border-b border-white/10">
+                <div key={l.href} className="js-mask border-b border-bone/10">
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
@@ -312,20 +314,20 @@ export default function Nav() {
 
             <div className="mt-12 flex flex-wrap items-end justify-between gap-8">
               <div className="menu-foot">
-                <p className="u-eyebrow mb-2 text-white/40">Enquiries</p>
+                <p className="u-eyebrow mb-2 text-bone/40">Enquiries</p>
                 <a
-                  href="https://wa.me/919074620945"
+                  href="https://wa.me/919207790485"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="u-link u-display text-2xl text-gold-lite"
                 >
-                  +91 90746 20945
+                  +91 92077 90485
                 </a>
               </div>
               <div className="menu-foot">
-                <p className="u-eyebrow mb-2 text-white/40">Where</p>
+                <p className="u-eyebrow mb-2 text-bone/40">Where</p>
                 <p className="u-mono text-sm text-bone">
-                  Kochi, Kerala · online &amp; offline
+                  Palarivattom, Kochi · online &amp; offline
                 </p>
               </div>
             </div>

@@ -6,7 +6,7 @@ import { FoxMark } from "./fox-art";
 import { SectionHead } from "./ui";
 
 const COPY =
-  "The financial markets reward preparation, discipline and consistency, not emotion. Successful trading goes beyond strategies; it is about building the mindset of the 5% Club, where discipline, patience and continuous learning drive long term success. You learn not just what to do, but why the market moves.";
+  "The financial markets reward preparation, discipline and consistency, not emotion. We help you approach Forex, Gold and Crypto trading with confidence — combining theory, practical application and expert mentor guidance so you understand not just what to do, but why the market moves.";
 
 export default function Manifesto() {
   const root = useRef(null);

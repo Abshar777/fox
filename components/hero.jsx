@@ -95,7 +95,7 @@ export default function Hero() {
       className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pb-10 pt-24 md:pb-14 md:pt-28"
     >
       {/* ---------- atmosphere ---------- */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[80vmax] w-[80vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(246,230,188,0.85),transparent_58%)] blur-2xl" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[80vmax] w-[80vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--hero-glow),transparent_58%)] blur-2xl" />
 
       <svg
         className="hero-ring pointer-events-none absolute left-1/2 top-1/2 h-[112vmin] w-[112vmin] -translate-x-1/2 -translate-y-1/2"
@@ -117,7 +117,7 @@ export default function Hero() {
           cy="200"
           r="158"
           fill="none"
-          stroke="#14100B"
+          stroke="var(--color-ink)"
           strokeOpacity="0.07"
           strokeWidth="0.7"
         />
@@ -152,7 +152,7 @@ export default function Hero() {
           </span>
           <span className="js-mask hero-l2 mt-2 block">
             <span className="hero-line-i u-foil block pb-[0.1em] text-[clamp(2rem,min(11vw,13vh),4.4rem)] italic leading-[1] lg:text-[clamp(3rem,min(7vw,12vh),8rem)]">
-              forex trading academy.
+              wealth academy.
             </span>
           </span>
         </h1>

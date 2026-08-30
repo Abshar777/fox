@@ -88,8 +88,8 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#f4efe4",
-  colorScheme: "light",
+  themeColor: "#14100b",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }) {
@@ -102,10 +102,13 @@ export default function RootLayout({ children }) {
       <head>
         {/* Marks that JS is running, so the reveal styles that hide content
             before animating it only apply when something can un-hide it.
-            This runs before hydration, hence suppressHydrationWarning above. */}
+            Also restores a saved light-theme choice before first paint
+            (dark is the default). Runs before hydration, hence
+            suppressHydrationWarning above. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: 'document.documentElement.setAttribute("data-js","")',
+            __html:
+              'document.documentElement.setAttribute("data-js","");try{localStorage.getItem("theme")==="light"&&document.documentElement.setAttribute("data-theme","light")}catch(e){}',
           }}
         />
       </head>
