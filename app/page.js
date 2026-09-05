@@ -10,6 +10,7 @@ import Stats from "@/components/stats";
 import WolfpackAi from "@/components/wolfpack-ai";
 import Founders from "@/components/founders";
 import Testimonials from "@/components/testimonials";
+import Journal from "@/components/journal";
 import Pricing from "@/components/pricing";
 import Faq from "@/components/faq";
 import Cta from "@/components/cta";
@@ -35,6 +36,7 @@ export default function Page() {
         <WolfpackAi />
         <Founders />
         <Testimonials />
+        <Journal />
         <Pricing />
         <Faq />
         <Cta />

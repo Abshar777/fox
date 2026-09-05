@@ -1,17 +1,33 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { gsap, ScrollTrigger, useIsoLayoutEffect } from "@/lib/gsap";
+import { NAV_LINKS, resolveHref, isActiveLink } from "@/lib/nav-links";
 import { LogoMark, LogoFull } from "./logo";
 import { Magnetic } from "./ui";
 import ThemeToggle from "./theme-toggle";
 
-const LINKS = [
-  { href: "#about", label: "About us" },
-  { href: "#programmes", label: "Course" },
-  { href: "#founders", label: "Founders" },
-  { href: "#contact", label: "Contact us" },
-];
+/**
+ * In-page hashes are plain anchors so Lenis can intercept and smooth-scroll
+ * them; anything leaving the page is a Link so Next prefetches and does a
+ * client transition.
+ */
+function NavHref({ href, children, ...rest }) {
+  if (href.startsWith("#")) {
+    return (
+      <a href={href} {...rest}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} {...rest}>
+      {children}
+    </Link>
+  );
+}
 
 /* live London clock — renders a stable placeholder for SSR */
 function Clock() {
@@ -42,8 +58,10 @@ function Clock() {
 export default function Nav() {
   const root = useRef(null);
   const menu = useRef(null);
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(null);
+  const onHome = pathname === "/";
 
   /* condensed skin, hide-on-scroll-down, scroll progress */
   useIsoLayoutEffect(() => {
@@ -91,21 +109,28 @@ export default function Nav() {
     return () => ctx.revert();
   }, []);
 
-  /* active section */
+  /* active section — only meaningful where the sections exist */
   useIsoLayoutEffect(() => {
-    const triggers = LINKS.map(({ href }) => {
-      const el = document.querySelector(href);
-      if (!el) return null;
-      return ScrollTrigger.create({
-        trigger: el,
-        start: "top 45%",
-        end: "bottom 45%",
-        onToggle: (self) => self.isActive && setActive(href),
-      });
-    }).filter(Boolean);
+    if (!onHome) {
+      setActive(null);
+      return;
+    }
+
+    const triggers = NAV_LINKS.filter((l) => l.hash)
+      .map(({ hash }) => {
+        const el = document.querySelector(hash);
+        if (!el) return null;
+        return ScrollTrigger.create({
+          trigger: el,
+          start: "top 45%",
+          end: "bottom 45%",
+          onToggle: (self) => self.isActive && setActive(hash),
+        });
+      })
+      .filter(Boolean);
 
     return () => triggers.forEach((t) => t.kill());
-  }, []);
+  }, [onHome]);
 
   /* fullscreen menu */
   useIsoLayoutEffect(() => {
@@ -192,8 +217,8 @@ export default function Nav() {
 
           <div className="u-shell relative flex items-center justify-between gap-6 py-4 md:py-5">
             {/* mark */}
-            <a
-              href="#top"
+            <NavHref
+              href={onHome ? "#top" : "/"}
               className="group flex shrink-0 items-center gap-3"
               aria-label="Wolfpack Wealth Academy, home"
             >
@@ -211,16 +236,17 @@ export default function Nav() {
                   Wealth Academy
                 </span>
               </span>
-            </a>
+            </NavHref>
 
             {/* links */}
             <nav className="hidden items-center gap-1 lg:flex">
-              {LINKS.map((l) => {
-                const on = active === l.href;
+              {NAV_LINKS.map((l) => {
+                const href = resolveHref(l, pathname);
+                const on = (l.hash && active === l.hash) || isActiveLink(l, pathname);
                 return (
-                  <a
-                    key={l.href}
-                    href={l.href}
+                  <NavHref
+                    key={l.label}
+                    href={href}
                     className="group relative flex items-baseline gap-2 px-3.5 py-2"
                   >
                     <span
@@ -235,7 +261,7 @@ export default function Nav() {
                         on ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                       }`}
                     />
-                  </a>
+                  </NavHref>
                 );
               })}
             </nav>
@@ -249,13 +275,13 @@ export default function Nav() {
               <ThemeToggle />
 
               <Magnetic strength={0.25}>
-                <a
-                  href="#contact"
+                <NavHref
+                  href={onHome ? "#contact" : "/#contact"}
                   className="u-btn u-btn--solid hidden md:inline-flex"
                   data-cursor="grow"
                 >
                   <span>Get started</span>
-                </a>
+                </NavHref>
               </Magnetic>
 
               <button
@@ -297,17 +323,17 @@ export default function Nav() {
 
           <div className="u-shell relative flex h-full flex-col justify-center pb-12 pt-24">
             <nav className="flex flex-col">
-              {LINKS.map((l) => (
-                <div key={l.href} className="js-mask border-b border-bone/10">
-                  <a
-                    href={l.href}
+              {NAV_LINKS.map((l) => (
+                <div key={l.label} className="js-mask border-b border-bone/10">
+                  <NavHref
+                    href={resolveHref(l, pathname)}
                     onClick={() => setOpen(false)}
                     className="menu-item group flex items-baseline gap-5 py-3"
                   >
                     <span className="u-display text-[13vw] leading-[0.95] text-bone transition-colors duration-500 group-hover:text-gold-lite sm:text-[9vw]">
                       {l.label}
                     </span>
-                  </a>
+                  </NavHref>
                 </div>
               ))}
             </nav>

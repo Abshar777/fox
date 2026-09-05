@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { gsap, useIsoLayoutEffect, REDUCED } from "@/lib/gsap";
 import { LogoFull } from "./logo";
 import { Magnetic } from "./ui";
@@ -13,6 +15,7 @@ const COLUMNS = [
       ["About us", "#about"],
       ["Programmes", "#programmes"],
       ["Founders", "#founders"],
+      ["Blogs", "/blog"],
       ["Contact us", "#contact"],
     ],
   },
@@ -39,6 +42,8 @@ const COLUMNS = [
 
 export default function Footer() {
   const root = useRef(null);
+  const pathname = usePathname();
+  const onHome = pathname === "/";
 
   useIsoLayoutEffect(() => {
     if (REDUCED()) return;
@@ -112,19 +117,35 @@ export default function Footer() {
               <ul className="space-y-3">
                 {c.links.map(([label, href]) => {
                   const ext = href.startsWith("http");
+                  const hash = href.startsWith("#");
+                  // Off the homepage a bare hash has nothing to scroll to, so
+                  // it becomes a real navigation back to that section.
+                  const to = hash && !onHome ? `/${href}` : href;
+                  const inner = (
+                    <span className="u-roll text-sm text-bone/75">
+                      <span data-t={label}>{label}</span>
+                    </span>
+                  );
                   return (
                     <li key={label}>
-                      <a
-                        href={href}
-                        {...(ext
-                          ? { target: "_blank", rel: "noreferrer noopener" }
-                          : {})}
-                        className="group inline-flex items-center gap-2"
-                      >
-                        <span className="u-roll text-sm text-bone/75">
-                          <span data-t={label}>{label}</span>
-                        </span>
-                      </a>
+                      {ext || (hash && onHome) ? (
+                        <a
+                          href={to}
+                          {...(ext
+                            ? { target: "_blank", rel: "noreferrer noopener" }
+                            : {})}
+                          className="group inline-flex items-center gap-2"
+                        >
+                          {inner}
+                        </a>
+                      ) : (
+                        <Link
+                          href={to}
+                          className="group inline-flex items-center gap-2"
+                        >
+                          {inner}
+                        </Link>
+                      )}
                     </li>
                   );
                 })}
@@ -197,7 +218,15 @@ export default function Footer() {
           © 2026 WOLFPACK WEALTH ACADEMY · POWERED BY LIMETEA
         </p>
         <a
-          href="#top"
+          href={onHome ? "#top" : "#"}
+          onClick={
+            onHome
+              ? undefined
+              : (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+          }
           data-cursor="grow"
           className="u-mono flex items-center gap-2 text-[0.58rem] tracking-widest text-bone/45 transition-colors hover:text-gold-lite"
         >
