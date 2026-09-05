@@ -4,9 +4,33 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger, REDUCED } from "@/lib/gsap";
 import { useLoader } from "./loader-context";
+import { usePathname } from "next/navigation";
 
 export default function SmoothScroll() {
   const { ready } = useLoader();
+  const pathname = usePathname();
+
+  useEffect(() => {
+
+    const lenis = new Lenis({
+      lerp: 0.085,
+      wheelMultiplier: 0.95,
+      smoothWheel: true,
+      touchMultiplier: 1.6,
+    });
+    if (!lenis) return;
+    if (window.location.hash) return;
+
+    // BOTH sides have to be reset, and that is the whole bug.
+    //
+    // Lenis keeps its own `animatedScroll` value and writes it to the document
+    // every frame. Telling only Lenis leaves the document where it was until the
+    // next tick; moving only the document leaves Lenis's value stale, and its
+    // next frame puts the old position straight back — which is why navigating
+    // into a post from halfway down /blog landed mid-article.
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    lenis.scrollTo(0, { immediate: true, force: true });
+  }, [ pathname]);
 
   useEffect(() => {
     if (REDUCED()) return;
