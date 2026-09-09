@@ -16,7 +16,7 @@ export default function Hero() {
   const root = useRef(null);
   const { ready } = useLoader();
 
-  /* intro — begins while the preloader curtains are still lifting */
+  /* intro begins while the preloader curtains are still lifting */
   useIsoLayoutEffect(() => {
     if (!ready || !root.current) return;
 

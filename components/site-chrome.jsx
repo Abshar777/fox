@@ -10,7 +10,7 @@ import Footer from "./footer";
  * Shared chrome for routes other than the homepage.
  *
  * Same texture, cursor and smooth scrolling as the landing page, minus the
- * preloader — a full-screen intro animation is right once on arrival, and
+ * preloader a full-screen intro animation is right once on arrival, and
  * wrong on every article a reader opens afterwards. `initialReady` stands in
  * for the preloader's completion so scrolling is released immediately.
  */

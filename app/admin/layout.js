@@ -6,7 +6,7 @@ export const metadata = {
 };
 
 /**
- * Bare wrapper for /admin — deliberately none of the marketing chrome
+ * Bare wrapper for /admin deliberately none of the marketing chrome
  * (preloader, custom cursor, smooth scroll), which would only get in the way
  * of an editing tool.
  */

@@ -10,7 +10,7 @@ import {
 } from "@/lib/gsap";
 
 /* ------------------------------------------------------------------
-   Reveal — masked line-by-line typography reveal driven by ScrollTrigger
+   Reveal masked line-by-line typography reveal driven by ScrollTrigger
    ------------------------------------------------------------------ */
 
 export function Reveal({
@@ -82,7 +82,7 @@ export function Reveal({
 }
 
 /* ------------------------------------------------------------------
-   MaskUp — single-line masked reveal that does NOT split the text.
+   MaskUp single-line masked reveal that does NOT split the text.
    Use for gradient/background-clip type, which SplitText would flatten.
    ------------------------------------------------------------------ */
 
@@ -120,7 +120,7 @@ export function MaskUp({
 }
 
 /* ------------------------------------------------------------------
-   FadeUp — simple staggered entrance for non-text blocks
+   FadeUp simple staggered entrance for non-text blocks
    ------------------------------------------------------------------ */
 
 export function FadeUp({
@@ -163,7 +163,7 @@ export function FadeUp({
 }
 
 /* ------------------------------------------------------------------
-   Magnetic — pointer-attracted wrapper for buttons and marks
+   Magnetic pointer-attracted wrapper for buttons and marks
    ------------------------------------------------------------------ */
 
 export function Magnetic({ children, strength = 0.35, className = "" }) {
@@ -211,7 +211,7 @@ export function Magnetic({ children, strength = 0.35, className = "" }) {
 }
 
 /* ------------------------------------------------------------------
-   Marquee — seamless loop that reacts to scroll velocity
+   Marquee seamless loop that reacts to scroll velocity
    ------------------------------------------------------------------ */
 
 export function Marquee({
@@ -280,7 +280,7 @@ export function Marquee({
 }
 
 /* ------------------------------------------------------------------
-   Counter — count-up on enter
+   Counter count-up on enter
    ------------------------------------------------------------------ */
 
 export function Counter({
@@ -338,7 +338,7 @@ export function Counter({
 }
 
 /* ------------------------------------------------------------------
-   SectionHead — the recurring numbered rule + label
+   SectionHead the recurring numbered rule + label
    ------------------------------------------------------------------ */
 
 export function SectionHead({ label, className = "" }) {

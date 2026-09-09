@@ -35,7 +35,7 @@ export function LogoSvgDefs({ id }) {
  * Solid crest, gold filled.
  *
  * With `sheen`, a highlight band is added *inside* a clip of the crest, so the
- * gloss only ever touches the mark itself — a plain overlay would paint a
+ * gloss only ever touches the mark itself a plain overlay would paint a
  * visible rectangle across the background behind it.
  */
 export function LogoSvgSolid({
@@ -86,7 +86,7 @@ export function LogoSvgSolid({
 
 /**
  * Stroke-only crest. Each run carries pathLength=1 so a dash tween maps
- * straight onto progress, and the runs are contiguous — drawn back to back
+ * straight onto progress, and the runs are contiguous drawn back to back
  * they read as one continuous pen stroke. The trailing circle is the pen tip.
  */
 export function LogoSvgLine({ className = "", strokeClass = "logo-stroke" }) {
@@ -100,7 +100,7 @@ export function LogoSvgLine({ className = "", strokeClass = "logo-stroke" }) {
         strokeLinecap="round"
       >
         {/* dash state is baked into the markup so the very first painted
-            frame is already blank — GSAP's own set only lands on tick one */}
+            frame is already blank GSAP's own set only lands on tick one */}
         {SEGMENTS.map((d, i) => (
           <path
             key={i}

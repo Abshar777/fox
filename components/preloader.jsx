@@ -35,7 +35,7 @@ export default function Preloader() {
       const DRAW = 2.1;
 
       // getPointAtLength is a synchronous geometry query and was being called
-      // once per frame per run — the main cause of jank on phones. Sample each
+      // once per frame per run the main cause of jank on phones. Sample each
       // run once up front instead and index the table while animating.
       const STEPS = 64;
       const penTable = runs.map((run, i) => {
@@ -52,7 +52,7 @@ export default function Preloader() {
         pen && pen.setAttribute("transform", `translate(${x} ${y})`);
 
       // Apply every hidden state now, inside the layout effect, rather than as
-      // the timeline's first tween — a timeline only renders on its first tick,
+      // the timeline's first tween a timeline only renders on its first tick,
       // which is one painted frame too late and flashes the finished mark.
       gsap.set(runs, { strokeDasharray: 1, strokeDashoffset: 1 });
       gsap.set(pen, { autoAlpha: 0 });

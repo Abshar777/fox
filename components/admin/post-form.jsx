@@ -197,7 +197,7 @@ export default function PostForm({ post }) {
           name="avatar"
           label="Author photo"
           defaultValue={initial.avatar ?? ""}
-          hint="Optional — without one, initials are generated from the author's name."
+          hint="Optional without one, initials are generated from the author's name."
         />
 
         <Field

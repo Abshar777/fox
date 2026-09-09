@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 /* ============================================================
-   FOX ACADEMY — Design tokens
+   FOX ACADEMY Design tokens
    Aesthetic: editorial luxury / precision instrument.
    Espresso night ground, foil gold, warm bone ink, one rust accent.
 
    Theming: dark is the default; `:root[data-theme="light"]` below
    restores the original light palette. The role of each token is
-   relational, not literal — `bone` is always the page ground and
+   relational, not literal `bone` is always the page ground and
    `ink` the foreground, and the lite/deep gold pair swaps with the
    theme so contrast sections keep working in both. `night` never
    changes: it is for text sitting on gold, which is mid-tone in
@@ -146,7 +146,7 @@
 }
 
 /* ============================================================
-   Components — layered so Tailwind utilities always win
+   Components layered so Tailwind utilities always win
    ============================================================ */
 
 @layer components {

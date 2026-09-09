@@ -29,7 +29,7 @@ function NavHref({ href, children, ...rest }) {
   );
 }
 
-/* live London clock — renders a stable placeholder for SSR */
+/* live London clock renders a stable placeholder for SSR */
 function Clock() {
   const [t, setT] = useState(null);
 
@@ -109,7 +109,7 @@ export default function Nav() {
     return () => ctx.revert();
   }, []);
 
-  /* active section — only meaningful where the sections exist */
+  /* active section only meaningful where the sections exist */
   useIsoLayoutEffect(() => {
     if (!onHome) {
       setActive(null);
@@ -250,16 +250,14 @@ export default function Nav() {
                     className="group relative flex items-baseline gap-2 px-3.5 py-2"
                   >
                     <span
-                      className={`u-eyebrow transition-colors duration-400 ${
-                        on ? "text-ink" : "text-ink-70"
-                      }`}
+                      className={`u-eyebrow transition-colors duration-400 ${on ? "text-ink" : "text-ink-70"
+                        }`}
                     >
                       {l.label}
                     </span>
                     <span
-                      className={`absolute inset-x-3 bottom-0 h-px origin-left bg-gold transition-transform duration-500 ease-[var(--ease-out-expo)] ${
-                        on ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                      }`}
+                      className={`absolute inset-x-3 bottom-0 h-px origin-left bg-gold transition-transform duration-500 ease-[var(--ease-out-expo)] ${on ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                        }`}
                     />
                   </NavHref>
                 );
@@ -293,14 +291,12 @@ export default function Nav() {
               >
                 <span className="relative block h-3 w-5">
                   <span
-                    className={`absolute left-0 block h-px w-5 transition-all duration-500 ${
-                      open ? "top-1.5 rotate-45 bg-bone" : "top-0 bg-ink"
-                    }`}
+                    className={`absolute left-0 block h-px w-5 transition-all duration-500 ${open ? "top-1.5 rotate-45 bg-bone" : "top-0 bg-ink"
+                      }`}
                   />
                   <span
-                    className={`absolute left-0 block h-px w-5 transition-all duration-500 ${
-                      open ? "top-1.5 -rotate-45 bg-bone" : "top-3 bg-ink"
-                    }`}
+                    className={`absolute left-0 block h-px w-5 transition-all duration-500 ${open ? "top-1.5 -rotate-45 bg-bone" : "top-3 bg-ink"
+                      }`}
                   />
                 </span>
               </button>

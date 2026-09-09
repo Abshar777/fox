@@ -2,7 +2,7 @@
  * Faceted origami crest used as a decorative motif inside sections.
  *
  * The nav and footer carry the real Wolfpack logo; this geometric mark is
- * the sectional counterpart — no eyes, no pupils, so it reads as a crest
+ * the sectional counterpart no eyes, no pupils, so it reads as a crest
  * rather than a cartoon. Symmetric about x = 200 in a 400 × 400 box.
  */
 
@@ -114,11 +114,12 @@ export function FoxLayerSnout() {
 
 export function FoxMark({ className = "", id = "fx" }) {
   return (
-    <svg viewBox="0 0 400 400" className={className} aria-hidden="true">
-      <FoxDefs id={id} />
-      <FoxLayerHead id={id} />
-      <FoxLayerMuzzle id={id} />
-      <FoxLayerSnout />
-    </svg>
+    // <svg viewBox="0 0 400 400" className={className} aria-hidden="true">
+    //   <FoxDefs id={id} />
+    //   <FoxLayerHead id={id} />
+    //   <FoxLayerMuzzle id={id} />
+    //   <FoxLayerSnout />
+    // </svg>
+    <></>
   );
 }

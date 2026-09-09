@@ -26,11 +26,11 @@ export default function SmoothScroll() {
     // Lenis keeps its own `animatedScroll` value and writes it to the document
     // every frame. Telling only Lenis leaves the document where it was until the
     // next tick; moving only the document leaves Lenis's value stale, and its
-    // next frame puts the old position straight back — which is why navigating
+    // next frame puts the old position straight back which is why navigating
     // into a post from halfway down /blog landed mid-article.
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     lenis.scrollTo(0, { immediate: true, force: true });
-  }, [ pathname]);
+  }, [pathname]);
 
   useEffect(() => {
     if (REDUCED()) return;

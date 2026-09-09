@@ -9,7 +9,7 @@ const PILLARS = [
     n: "01",
     title: "Structured trading framework",
     lead: "Structure before opinion.",
-    body: "Market structure, liquidity and price action, taught step by step — so a setup becomes something you recognise, not something you hope for.",
+    body: "Market structure, liquidity and price action, taught step by step so a setup becomes something you recognise, not something you hope for.",
     tags: ["Market structure", "Liquidity", "Price action"],
     art: "structure",
   },
@@ -25,7 +25,7 @@ const PILLARS = [
     n: "03",
     title: "Live mentorship & trade reviews",
     lead: "Real traders, real feedback.",
-    body: "Real traders review your journal and refine your strategy, online or offline — live analysis, trade reviews and one to one doubt clearing.",
+    body: "Real traders review your journal and refine your strategy, online or offline live analysis, trade reviews and one to one doubt clearing.",
     tags: ["Journal reviews", "Live analysis", "1:1 doubt clearing"],
     art: "loop",
   },
@@ -49,14 +49,14 @@ const PILLARS = [
     n: "06",
     title: "The Wolfpack community",
     lead: "The edge is in the loop.",
-    body: "24/7 support, market updates and psychology sessions with serious traders across Kerala — learning that continues long after the last class.",
+    body: "24/7 support, market updates and psychology sessions with serious traders across Kerala learning that continues long after the last class.",
     tags: ["24/7 support", "Market updates", "Psychology sessions"],
     art: "loop",
   },
 ];
 
 /* ------------------------------------------------------------------
-   Candlestick diagrams — one per pillar, hand-authored OHLC so each
+   Candlestick diagrams one per pillar, hand-authored OHLC so each
    chart actually tells that pillar's story. Nothing is drawn from an
    image asset; it is all geometry.
    ------------------------------------------------------------------ */
@@ -67,7 +67,7 @@ const RUST = "#C9501F";
 
 /** [open, high, low, close] in 0–100 space, oldest first. */
 const SERIES = {
-  // higher highs, higher lows — clean bullish structure
+  // higher highs, higher lows clean bullish structure
   structure: [
     [20, 28, 17, 26],
     [26, 32, 23, 24],
@@ -108,7 +108,7 @@ const SERIES = {
     [69, 80, 66, 78],
     [78, 86, 74, 84],
   ],
-  // the same read, repeated — two matching cycles
+  // the same read, repeated two matching cycles
   loop: [
     [28, 36, 25, 34],
     [34, 40, 31, 33],
@@ -363,7 +363,7 @@ export default function Method() {
             },
           });
         });
-        return () => ScrollTrigger.getAll().forEach(() => {});
+        return () => ScrollTrigger.getAll().forEach(() => { });
       });
 
       return () => mm.revert();

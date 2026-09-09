@@ -4,7 +4,7 @@ import { getImage } from "@/lib/image-repo";
  * Public byte-serving endpoint for uploaded images.
  *
  * Responses are immutable-cacheable because the URL is content-addressed by
- * the Mongo `_id` — a given id always returns the same bytes, and replacing
+ * the Mongo `_id` a given id always returns the same bytes, and replacing
  * an image mints a new id.
  */
 export async function GET(_request, ctx) {

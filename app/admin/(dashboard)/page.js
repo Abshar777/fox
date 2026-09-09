@@ -16,7 +16,7 @@ function flashFor(params) {
     const count = Number(params.imported);
     return count > 0
       ? `Imported ${count} starter note${count === 1 ? "" : "s"}.`
-      : "Nothing imported — the collection already has notes.";
+      : "Nothing imported the collection already has notes.";
   }
   return null;
 }
@@ -47,7 +47,7 @@ export default async function AdminPostsPage({ searchParams }) {
         </p>
       ) : null}
 
-      {/* Reads fall back to bundled content, but writes need a database — say
+      {/* Reads fall back to bundled content, but writes need a database say
           so plainly rather than letting saves fail with a driver error. */}
       {!isConfigured ? (
         <p className="u-mono mt-7 border border-rust/40 bg-rust/10 px-4 py-3.5 text-[0.68rem] leading-relaxed text-ink">

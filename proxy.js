@@ -5,7 +5,7 @@ import { SESSION_COOKIE, verifySessionToken } from "@/lib/auth";
  * Gate for /admin.
  *
  * This is the optimistic check that keeps signed-out browsers out of the UI.
- * It is not the authorization boundary — every mutating Server Action calls
+ * It is not the authorization boundary every mutating Server Action calls
  * `requireSession()` itself, because actions are POST endpoints reachable
  * without ever passing through here.
  */

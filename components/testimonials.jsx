@@ -76,7 +76,7 @@ export default function Testimonials() {
             <Quote key={`a-${i}`} {...t} />
           ))}
         </Marquee>
-        {/* second lane is desktop only — on a phone one row is plenty, and it
+        {/* second lane is desktop only on a phone one row is plenty, and it
             halves both the section height and the running animation cost */}
         <div className="hidden md:block">
           <Marquee speed={64} direction={-1}>

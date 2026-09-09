@@ -36,7 +36,7 @@ function revalidateBlog(slug) {
 }
 
 /**
- * Only allow post-login redirects to our own admin paths — an unchecked
+ * Only allow post-login redirects to our own admin paths an unchecked
  * `next` parameter would turn the login page into an open redirect.
  */
 function safeNext(value) {
@@ -103,7 +103,7 @@ function parsePost(formData) {
 function validate(post) {
   if (!post.title) return "Give the note a title.";
   if (!post.slug) return "That title does not produce a usable slug.";
-  if (!post.excerpt) return "Write a short excerpt — it is used on cards and in search results.";
+  if (!post.excerpt) return "Write a short excerpt it is used on cards and in search results.";
   if (!post.author) return "Name the author.";
   if (!post.image) return "Add a cover image.";
   if (!/^\d{4}-\d{2}-\d{2}$/.test(post.publishedAt)) {

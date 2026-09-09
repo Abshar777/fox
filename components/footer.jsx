@@ -180,7 +180,7 @@ export default function Footer() {
               <br />
               RBI Lane, South Janatha Road,
               <br />
-              Palarivattom, Kochi — 682032
+              Palarivattom, Kochi 682032
               <br />
               Online &amp; offline
             </p>

@@ -120,8 +120,8 @@ export default function Founders() {
             The people behind the pack.
           </Reveal>
           <p className="max-w-sm text-[0.82rem] leading-relaxed text-bone/55 md:text-sm">
-            The founders of Wolfpack Wealth Academy — a professional Forex
-            trading institute in Kochi — lead every programme, online and
+            The founders of Wolfpack Wealth Academy a professional Forex
+            trading institute in Kochi lead every programme, online and
             offline.
           </p>
         </div>

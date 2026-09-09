@@ -25,7 +25,7 @@ export default function ThemeToggle() {
     try {
       localStorage.setItem("theme", next ? "light" : "dark");
     } catch {
-      /* private mode — theme just won't persist */
+      /* private mode theme just won't persist */
     }
   };
 

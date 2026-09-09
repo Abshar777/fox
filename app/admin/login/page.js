@@ -11,7 +11,7 @@ export const metadata = {
 export default async function LoginPage({ searchParams }) {
   const { next } = await searchParams;
 
-  // Already signed in — no reason to show the form again.
+  // Already signed in no reason to show the form again.
   if (await hasSession()) redirect("/admin");
 
   return (

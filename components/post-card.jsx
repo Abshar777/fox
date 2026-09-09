@@ -23,7 +23,7 @@ export function CategoryPill({ children, tone = "flat" }) {
   );
 }
 
-/** Author, date and read time — the recurring byline row. */
+/** Author, date and read time the recurring byline row. */
 export function Meta({ post, size = 32, className = "" }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>

@@ -13,7 +13,7 @@ const PROGRAMMES = [
   {
     n: "01",
     name: "Forex Blueprint",
-    line: "The beginner course · 10–15 days · online & offline. Designed for complete beginners who want to learn forex and gold trading the right way — with structure, discipline and the risk-first mindset of the top 5% of traders.",
+    line: "The beginner course · 10–15 days · online & offline. Designed for complete beginners who want to learn forex and gold trading the right way with structure, discipline and the risk-first mindset of the top 5% of traders.",
     features: [
       "Market basics: currency markets, sessions & pairs",
       "Gold trading: XAU/USD behaviour & strategy",
@@ -28,7 +28,7 @@ const PROGRAMMES = [
   {
     n: "02",
     name: "Master PowerHouse",
-    line: "Intermediate to advanced · 30–40 days · online & offline. You've learned the basics — now learn what the institutions know: liquidity, institutional order flow and advanced price action.",
+    line: "Intermediate to advanced · 30–40 days · online & offline. You've learned the basics now learn what the institutions know: liquidity, institutional order flow and advanced price action.",
     features: [
       "Institutional concepts: aligning with banks and funds",
       "Liquidity analysis: identifying stop hunts & traps",
@@ -51,7 +51,7 @@ const PROGRAMMES = [
   {
     n: "04",
     name: "Wolfpack AI Technology",
-    line: "Our proprietary AI scans gold & forex markets, detects patterns and delivers actionable insights — built for busy professionals.",
+    line: "Our proprietary AI scans gold & forex markets, detects patterns and delivers actionable insights built for busy professionals.",
     cta: "Explore Wolfpack AI",
     size: "small",
     span: "lg:col-span-1",
@@ -59,7 +59,7 @@ const PROGRAMMES = [
   {
     n: "05",
     name: "Wolfpack Bootcamp",
-    line: "Live trading mentorship in Kochi. Courses teach you concepts — the Wolfpack Bootcamp makes you a trader, bridging the gap between learning and actual market participation.",
+    line: "Live trading mentorship in Kochi. Courses teach you concepts the Wolfpack Bootcamp makes you a trader, bridging the gap between learning and actual market participation.",
     features: [
       "Community access: trade alongside serious traders across Kerala",
       "Live market analysis: watch professionals break down live movements",
@@ -75,7 +75,7 @@ const PROGRAMMES = [
   {
     n: "06",
     name: "Wealth Creation · The 5% Club",
-    line: "Our wealth creation circle for the disciplined few — traders committed to compounding capital patiently instead of chasing quick wins.",
+    line: "Our wealth creation circle for the disciplined few traders committed to compounding capital patiently instead of chasing quick wins.",
     features: [
       "Long term wealth building framework",
       "Compounding & capital allocation guidance",
@@ -94,11 +94,10 @@ function Tile({ t }) {
 
   return (
     <article
-      className={`tier group relative flex flex-col overflow-hidden rounded-[3px] border p-7 transition-colors duration-500 md:p-9 ${t.span} ${
-        dark
+      className={`tier group relative flex flex-col overflow-hidden rounded-[3px] border p-7 transition-colors duration-500 md:p-9 ${t.span} ${dark
           ? "border-gold bg-ink text-bone"
           : "border-[var(--rule)] bg-paper hover:border-gold"
-      }`}
+        }`}
     >
       {dark && (
         <>
@@ -115,23 +114,20 @@ function Tile({ t }) {
       <div className={banner ? "lg:flex lg:items-start lg:gap-14" : ""}>
         <div className={banner ? "lg:w-[42%] lg:shrink-0" : ""}>
           <p
-            className={`u-mono text-[0.6rem] tracking-[0.2em] ${
-              dark ? "text-gold-lite" : "text-gold"
-            }`}
+            className={`u-mono text-[0.6rem] tracking-[0.2em] ${dark ? "text-gold-lite" : "text-gold"
+              }`}
           >
             {t.n}
           </p>
           <h3
-            className={`u-display mt-3 leading-tight ${
-              dark ? "text-[2.6rem] text-gold-lite" : "text-[1.9rem] text-ink"
-            }`}
+            className={`u-display mt-3 leading-tight ${dark ? "text-[2.6rem] text-gold-lite" : "text-[1.9rem] text-ink"
+              }`}
           >
             {t.name}
           </h3>
           <p
-            className={`mt-4 text-sm leading-relaxed ${
-              dark ? "text-bone/60" : "text-ink-70"
-            }`}
+            className={`mt-4 text-sm leading-relaxed ${dark ? "text-bone/60" : "text-ink-70"
+              }`}
           >
             {t.line}
           </p>
@@ -139,16 +135,14 @@ function Tile({ t }) {
 
         {t.features && (
           <ul
-            className={`mt-7 space-y-3 border-t pt-6 ${
-              dark ? "border-bone/15" : "border-[var(--rule)]"
-            } ${banner ? "lg:mt-0 lg:grid lg:flex-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-3 lg:space-y-0 lg:border-l lg:border-t-0 lg:pl-14 lg:pt-0" : ""}`}
+            className={`mt-7 space-y-3 border-t pt-6 ${dark ? "border-bone/15" : "border-[var(--rule)]"
+              } ${banner ? "lg:mt-0 lg:grid lg:flex-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-3 lg:space-y-0 lg:border-l lg:border-t-0 lg:pl-14 lg:pt-0" : ""}`}
           >
             {t.features.map((f) => (
               <li key={f} className="flex gap-3 text-[0.88rem] leading-snug">
                 <span
-                  className={`mt-[0.42em] block h-1 w-1 shrink-0 rounded-full ${
-                    dark ? "bg-gold-lite" : "bg-gold"
-                  }`}
+                  className={`mt-[0.42em] block h-1 w-1 shrink-0 rounded-full ${dark ? "bg-gold-lite" : "bg-gold"
+                    }`}
                 />
                 <span className={dark ? "text-bone/75" : "text-ink-70"}>
                   {f}
@@ -174,9 +168,8 @@ function Tile({ t }) {
             <a
               href="#contact"
               data-cursor="grow"
-              className={`u-btn ${
-                dark ? "border-gold bg-gold text-night" : "u-btn--ghost"
-              }`}
+              className={`u-btn ${dark ? "border-gold bg-gold text-night" : "u-btn--ghost"
+                }`}
             >
               <span>{t.cta}</span>
             </a>
@@ -202,7 +195,7 @@ export default function Pricing() {
           </Reveal>
           <p className="max-w-sm text-[0.82rem] leading-relaxed text-ink-70 md:text-sm">
             Whether you are starting from zero or looking to scale your
-            portfolio, we have a blueprint for your success — from your first
+            portfolio, we have a blueprint for your success from your first
             structured course through to live mentorship, AI powered trading
             and long term wealth creation.
           </p>

@@ -6,7 +6,7 @@ import fullSrc from "@/public/logo.webp";
  * Brand assets.
  *
  * `logo.webp` carries a white "WOLF PACK" wordmark, so it only reads on dark
- * surfaces — use <LogoFull /> there. `logo-mark.png` is the gold W crest cut
+ * surfaces use <LogoFull /> there. `logo-mark.png` is the gold W crest cut
  * out of the same file; it works on any background, so light surfaces pair
  * <LogoMark /> with a typeset wordmark.
  */

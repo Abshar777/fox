@@ -6,8 +6,8 @@ import { initialsOf, colorsOf } from "@/lib/avatar";
  * prerendered server components.
  *
  * Photos use a plain <img> rather than next/image because the source is
- * arbitrary operator input — an uploaded blob served from /api/images, or a
- * pasted third-party URL — and next/image would reject any remote host not
+ * arbitrary operator input an uploaded blob served from /api/images, or a
+ * pasted third-party URL and next/image would reject any remote host not
  * listed in remotePatterns.
  */
 export default function Avatar({ name, src, size = 40, className = "" }) {

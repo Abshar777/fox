@@ -7,7 +7,7 @@ import { listPosts } from "@/lib/blog-repo";
  * Homepage strip: the three newest Blogs.
  *
  * A server component so the landing page ships the notes in its initial HTML
- * — the section is above the footer and inside the crawl path for /blog.
+ * the section is above the footer and inside the crawl path for /blog.
  */
 export default async function Journal() {
   const posts = (await listPosts()).slice(0, 3);

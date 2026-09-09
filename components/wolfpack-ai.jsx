@@ -2,7 +2,7 @@
 
 import { Reveal, SectionHead, FadeUp } from "./ui";
 
-/* Wolfpack AI Technology — copy from the published site content. */
+/* Wolfpack AI Technology copy from the published site content. */
 const FEATURES = [
   {
     n: "01",
@@ -37,7 +37,7 @@ export default function WolfpackAi() {
             </Reveal>
             <p className="mt-6 max-w-md text-[0.85rem] leading-relaxed text-ink-70 md:text-base">
               Successful trading requires time, market analysis and disciplined
-              decision making — but not everyone can spend hours watching
+              decision making but not everyone can spend hours watching
               charts every day. Wolfpack AI continuously analyses the Forex and
               Gold markets, identifies potential opportunities and executes
               trades based on its programmed trading logic.

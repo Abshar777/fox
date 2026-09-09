@@ -1,4 +1,4 @@
-/** Small candlestick glyph — used wherever a decorative divider is needed. */
+/** Small candlestick glyph used wherever a decorative divider is needed. */
 export function CandleGlyph({ className = "", stroke = "currentColor" }) {
   return (
     <svg viewBox="0 0 28 28" className={className} aria-hidden="true">

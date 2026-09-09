@@ -194,7 +194,7 @@ export default async function PostPage({ params }) {
                   <div className="max-w-md">
                     <p className="u-eyebrow text-gold">Learn this properly</p>
                     <p className="u-display mt-4 text-[1.6rem] leading-[1.05] sm:text-[1.9rem]">
-                      Structure, risk and psychology — taught step by step.
+                      Structure, risk and psychology taught step by step.
                     </p>
                     <p className="mt-4 text-[0.86rem] leading-relaxed text-ink-70">
                       Live mentorship and trade reviews with the Wolfpack desk,

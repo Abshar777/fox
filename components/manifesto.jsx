@@ -6,7 +6,7 @@ import { FoxMark } from "./fox-art";
 import { SectionHead } from "./ui";
 
 const COPY =
-  "The financial markets reward preparation, discipline and consistency, not emotion. We help you approach Forex, Gold and Crypto trading with confidence — combining theory, practical application and expert mentor guidance so you understand not just what to do, but why the market moves.";
+  "The financial markets reward preparation, discipline and consistency, not emotion. We help you approach Forex, Gold and Crypto trading with confidence combining theory, practical application and expert mentor guidance so you understand not just what to do, but why the market moves.";
 
 export default function Manifesto() {
   const root = useRef(null);
@@ -71,26 +71,21 @@ export default function Manifesto() {
     <section
       id="about"
       ref={root}
-      className="relative scroll-mt-24 py-24 md:py-36"
+      className="relative scroll-mt-24 md:mt-14 mb-10  py-24 "
     >
-      <div className="u-shell">
+      <div className="u-shell flex flex-col mx-auto  gap-4  justify-center  items-center">
         <SectionHead label="Our Philosophy" />
 
-        <div className="relative mt-14 grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-2">
-            <FoxMark
-              className="manifesto-fox h-20 w-20 opacity-80 md:h-28 md:w-28"
-              id="man"
-            />
-          </div>
+        {/* <div className="relative mt-14 grid gap-12 lg:grid-cols-12"> */}
 
-          <p
-            ref={para}
-            className="u-display text-[clamp(1.5rem,7.4vw,2.6rem)] leading-[1.06] text-ink lg:col-span-10 lg:text-[clamp(1.9rem,3.5vw,3.4rem)]"
-          >
-            {COPY}
-          </p>
-        </div>
+
+        <p
+          ref={para}
+          className="u-display text-center text-[clamp(1.5rem,7.4vw,2.6rem)] leading-[1.06] text-ink lg:col-span-10 lg:text-[clamp(1.9rem,3.5vw,3.4rem)]"
+        >
+          {COPY}
+        </p>
+        {/* </div> */}
       </div>
     </section>
   );

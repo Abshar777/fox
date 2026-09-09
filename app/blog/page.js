@@ -8,13 +8,13 @@ import { listPosts } from "@/lib/blog-repo";
 export const metadata = {
   title: "Blogs",
   description:
-    "Trading notes from the Wolfpack Wealth Academy desk in Kochi — market structure, risk management, trading psychology and gold, written by the mentors who teach them.",
+    "Trading notes from the Wolfpack Wealth Academy desk in Kochi market structure, risk management, trading psychology and gold, written by the mentors who teach them.",
   alternates: { canonical: "/blog" },
   openGraph: {
     type: "website",
     title: "Blogs · Wolfpack Wealth Academy",
     description:
-      "Trading notes from the Wolfpack Wealth Academy desk — market structure, risk, psychology and gold.",
+      "Trading notes from the Wolfpack Wealth Academy desk market structure, risk, psychology and gold.",
     url: "/blog",
   },
 };
@@ -47,7 +47,7 @@ export default async function BlogPage() {
 
           <div className="lg:col-span-5 lg:pt-3">
             <p className="max-w-md text-[0.95rem] leading-relaxed text-ink-70 md:text-base">
-              Structure, liquidity, risk and psychology — written by the mentors
+              Structure, liquidity, risk and psychology written by the mentors
               who teach them in Kochi. No signals, no hype, no guaranteed
               returns. Just the reasoning we use on live charts.
             </p>

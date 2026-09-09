@@ -10,7 +10,7 @@ const ALL = "All notes";
  * Category filter over the notes grid.
  *
  * Filtering is client-side on an already-loaded list rather than a URL query,
- * because the whole index is a handful of records — a round trip per pill
+ * because the whole index is a handful of records a round trip per pill
  * would be slower and would lose scroll position.
  */
 export default function BlogFilter({ posts }) {
@@ -69,11 +69,10 @@ export default function BlogFilter({ posts }) {
               aria-selected={on}
               onClick={() => setActive(category)}
               data-cursor="grow"
-              className={`u-eyebrow rounded-full border px-4 py-2.5 transition-all duration-500 ease-[var(--ease-out-expo)] ${
-                on
+              className={`u-eyebrow rounded-full border px-4 py-2.5 transition-all duration-500 ease-[var(--ease-out-expo)] ${on
                   ? "border-gold bg-gold text-night"
                   : "border-[var(--rule)] text-ink-70 hover:border-gold/50 hover:text-ink"
-              }`}
+                }`}
             >
               {category}
             </button>
