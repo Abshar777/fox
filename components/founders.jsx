@@ -27,9 +27,9 @@ const FOUNDERS = [
     initials: "AA",
   },
   {
-    name: "Ms Nincy KMS",
+    name: "Ms Athira ",
     role: "Chief Operating Officer",
-    photo: "/founders/NINCY.webp",
+    photo: "/founders/aa.PNG",
     hasPhoto: true,
     initials: "NK",
   },
