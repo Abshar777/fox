@@ -35,7 +35,7 @@ const COLUMNS = [
       ["Instagram", "https://www.instagram.com/wolfpack_wealth__academy"],
       ["Facebook", "https://www.facebook.com/share/1J1zFfWpY8/"],
       ["YouTube", "https://youtube.com/@wolfpackwealthacademy"],
-      ["WhatsApp", "https://wa.me/919207790485"],
+      ["WhatsApp", "https://wa.me/919048514395"],
     ],
   },
 ];
@@ -99,7 +99,7 @@ export default function Footer() {
               </Magnetic>
               <Magnetic strength={0.25}>
                 <a
-                  href="https://wa.me/919207790485"
+                  href="https://wa.me/919048514395"
                   target="_blank"
                   rel="noreferrer noopener"
                   data-cursor="grow"
@@ -156,12 +156,12 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <p className="u-eyebrow mb-5 text-bone/35">Reach us</p>
             <a
-              href="https://wa.me/919207790485"
+              href="https://wa.me/919048514395"
               target="_blank"
               rel="noreferrer noopener"
               className="u-mono block text-[0.68rem] leading-relaxed text-bone/60 transition-colors hover:text-gold-lite"
             >
-              +91 92077 90485
+              +91 90485 14395
             </a>
             <a
               href="tel:+916238188112"

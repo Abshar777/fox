@@ -159,7 +159,7 @@ export default function Cta() {
               </Magnetic>
               <Magnetic strength={0.28}>
                 <a
-                  href="https://wa.me/919207790485"
+                  href="https://wa.me/919048514395"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="u-btn border-bone/25 text-bone"

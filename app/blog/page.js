@@ -120,7 +120,7 @@ export default async function BlogPage() {
               </Magnetic>
               <Magnetic strength={0.25}>
                 <a
-                  href="https://wa.me/919207790485"
+                  href="https://wa.me/919048514395"
                   target="_blank"
                   rel="noreferrer noopener"
                   data-cursor="grow"

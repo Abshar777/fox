@@ -338,7 +338,7 @@ export default function Nav() {
               <div className="menu-foot">
                 <p className="u-eyebrow mb-2 text-bone/40">Enquiries</p>
                 <a
-                  href="https://wa.me/919207790485"
+                  href="https://wa.me/919048514395"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="u-link u-display text-2xl text-gold-lite"

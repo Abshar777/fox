@@ -51,7 +51,7 @@ export default function Faq() {
               salesperson, answers every enquiry.
             </p>
             <a
-              href="https://wa.me/919207790485"
+              href="https://wa.me/919048514395"
               target="_blank"
               rel="noreferrer noopener"
               className="u-link u-display mt-4 inline-block text-xl text-gold-deep"
@@ -77,9 +77,8 @@ export default function Faq() {
                         0{i + 1}
                       </span>
                       <span
-                        className={`u-display text-[1.6rem] leading-tight transition-colors duration-400 md:text-[1.9rem] ${
-                          isOpen ? "text-gold-deep" : "text-ink"
-                        }`}
+                        className={`u-display text-[1.6rem] leading-tight transition-colors duration-400 md:text-[1.9rem] ${isOpen ? "text-gold-deep" : "text-ink"
+                          }`}
                       >
                         {it.q}
                       </span>
@@ -87,9 +86,8 @@ export default function Faq() {
                     <span className="relative mt-3 block h-3 w-3 shrink-0">
                       <span className="absolute left-0 top-1/2 block h-px w-3 bg-ink" />
                       <span
-                        className={`absolute left-1/2 top-0 block h-3 w-px bg-ink transition-transform duration-500 ${
-                          isOpen ? "scale-y-0" : "scale-y-100"
-                        }`}
+                        className={`absolute left-1/2 top-0 block h-3 w-px bg-ink transition-transform duration-500 ${isOpen ? "scale-y-0" : "scale-y-100"
+                          }`}
                       />
                     </span>
                   </button>
