@@ -3,27 +3,27 @@
 import { useEffect, useState } from "react";
 
 /**
- * Light/dark switch. Dark is the default (no attribute); light mode sets
- * data-theme="light" on <html>, mirrored to localStorage and restored
+ * Light/dark switch. Light is the default (no attribute); dark mode sets
+ * data-theme="dark" on <html>, mirrored to localStorage and restored
  * before paint by the inline script in app/layout.js.
  */
 export default function ThemeToggle() {
-  const [light, setLight] = useState(false);
+  const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    setLight(document.documentElement.dataset.theme === "light");
+    setDark(document.documentElement.dataset.theme === "dark");
   }, []);
 
   const toggle = () => {
-    const next = !light;
-    setLight(next);
+    const next = !dark;
+    setDark(next);
     if (next) {
-      document.documentElement.dataset.theme = "light";
+      document.documentElement.dataset.theme = "dark";
     } else {
       delete document.documentElement.dataset.theme;
     }
     try {
-      localStorage.setItem("theme", next ? "light" : "dark");
+      localStorage.setItem("theme", next ? "dark" : "light");
     } catch {
       /* private mode theme just won't persist */
     }
@@ -32,12 +32,12 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      aria-label={light ? "Switch to dark theme" : "Switch to light theme"}
-      aria-pressed={light}
+      aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
+      aria-pressed={dark}
       data-cursor="grow"
       className="grid h-11 w-11 place-items-center rounded-full border border-ink/25 text-ink transition-colors duration-500 hover:border-gold hover:text-gold"
     >
-      {light ? (
+      {!dark ? (
         /* moon */
         <svg viewBox="0 0 20 20" className="h-4 w-4" aria-hidden="true">
           <path

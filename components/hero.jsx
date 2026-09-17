@@ -183,7 +183,8 @@ export default function Hero() {
             </Magnetic>
             <Magnetic strength={0.3}>
               <a
-                href="#contact"
+                href="https://wa.me/919048514395"
+                target="_blank"
                 className="u-btn u-btn--ghost"
                 data-cursor="grow"
               >
