@@ -86,6 +86,20 @@ const PROGRAMMES = [
     size: "banner",
     span: "lg:col-span-4",
   },
+  {
+    n: "07",
+    name: "Multi Account Management",
+    line: "Experienced professionals manage your trading with a disciplined, transparent and risk focused approach.",
+    features: [
+      "Account stays in your name",
+      "Trading access only, never your deposits or withdrawals",
+      "Monitor your account activity at any time",
+      "Capital protection before profits",
+    ],
+    cta: "Ask about MAM",
+    size: "banner",
+    span: "lg:col-span-4",
+  },
 ];
 
 function Tile({ t }) {
