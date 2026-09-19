@@ -88,7 +88,7 @@ export default function Footer() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Magnetic strength={0.25}>
                 <a
-                  href="https://client.mbfx.co/register?ref=3A52F2"
+                  href="https://my.mbxpro.com/register?ref=A75AA6AF7F9B"
                   target="_blank"
                   rel="noreferrer noopener"
                   data-cursor="grow"

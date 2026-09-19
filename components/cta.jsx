@@ -88,7 +88,12 @@ export default function Cta() {
       className="relative scroll-mt-24 py-20 md:py-28"
     >
       <div className="u-shell">
-        <div className="cta-card relative isolate overflow-hidden rounded-[4px] border border-gold/30 bg-ink px-6 py-14 text-center text-bone shadow-[0_50px_120px_-60px_rgba(20,16,11,0.9)] sm:py-20 md:px-16 md:py-28">
+        <div
+          style={{
+            borderRadius: "15px",
+          }}
+          className="cta-card relative isolate overflow-hidden rounded-[4px] border border-gold/30 bg-ink px-6 py-14 text-center text-bone shadow-[0_50px_120px_-60px_rgba(20,16,11,0.9)] sm:py-20 md:px-16 md:py-28"
+        >
           {/* --- atmosphere, contained by the card --- */}
           <div
             ref={glow}
@@ -148,7 +153,7 @@ export default function Cta() {
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <Magnetic strength={0.28}>
                 <a
-                  href="https://client.mbfx.co/register?ref=3A52F2"
+                  href="https://my.mbxpro.com/register?ref=A75AA6AF7F9B"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="u-btn border-gold bg-gold text-night"

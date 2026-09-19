@@ -11,7 +11,6 @@ import WolfpackAi from "@/components/wolfpack-ai";
 import Founders from "@/components/founders";
 import Testimonials from "@/components/testimonials";
 import Journal from "@/components/journal";
-import Pricing from "@/components/pricing";
 import Faq from "@/components/faq";
 import Cta from "@/components/cta";
 import Footer from "@/components/footer";
@@ -37,7 +36,6 @@ export default function Page() {
         <Founders />
         <Testimonials />
         <Journal />
-        <Pricing />
         <Faq />
         <Cta />
       </main>
