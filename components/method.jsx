@@ -8,24 +8,6 @@ import { TrendGlyph } from "./icons";
 const PROGRAMS = [
   {
     n: "01",
-    title: "Forex Blueprint",
-    lead: "Structure before opinion.",
-    body: "Designed for complete beginners who want to learn forex and gold trading the right way, with structure, discipline and the risk-first mindset of the top 5% of traders. 10–15 days, online & offline.",
-    tags: ["Market basics", "Gold trading", "Risk management"],
-    art: "structure",
-    cta: "Explore the course",
-  },
-  {
-    n: "02",
-    title: "Master PowerHouse",
-    lead: "Trade like the institutions.",
-    body: "You've learned the basics, now learn what the institutions know: liquidity, institutional order flow and advanced price action. 30–40 days, online & offline.",
-    tags: ["Institutional concepts", "Liquidity analysis", "Advanced price action"],
-    art: "liquidity",
-    cta: "Level up",
-  },
-  {
-    n: "03",
     title: "Premium Community",
     lead: "Never trade alone.",
     body: "A live trading community for daily signals, expert insights, market discussions and continued mentorship long after the last class.",
@@ -34,7 +16,7 @@ const PROGRAMS = [
     cta: "Join the community",
   },
   {
-    n: "04",
+    n: "02",
     title: "Wolfpack AI Technology",
     lead: "Insight, on tap.",
     body: "Our proprietary AI scans the Gold and Forex markets, detects patterns and delivers actionable insights that complement your own analysis.",
@@ -43,7 +25,7 @@ const PROGRAMS = [
     cta: "Explore Wolfpack AI",
   },
   {
-    n: "05",
+    n: "03",
     title: "Wolfpack Bootcamp",
     lead: "Real traders, real feedback.",
     body: "Courses teach you concepts, the Bootcamp makes you a trader. Live trading mentorship in Kochi that bridges the gap between learning and actual market participation.",
@@ -52,7 +34,7 @@ const PROGRAMS = [
     cta: "Join the Bootcamp",
   },
   {
-    n: "06",
+    n: "04",
     title: "Wealth Creation · The 5% Club",
     lead: "Capital protection before profits.",
     body: "Our wealth creation circle for the disciplined few, committed to compounding capital patiently instead of chasing quick wins.",
@@ -61,7 +43,7 @@ const PROGRAMS = [
     cta: "Ask about the 5% Club",
   },
   {
-    n: "07",
+    n: "05",
     title: "Multi Account Management",
     lead: "Trade with discipline, on your behalf.",
     body: "Experienced professionals manage your trading with a disciplined, transparent and risk-focused approach. Your account stays in your name.",
@@ -83,36 +65,6 @@ const RUST = "#C9501F";
 
 /** [open, high, low, close] in 0–100 space, oldest first. */
 const SERIES = {
-  // higher highs, higher lows clean bullish structure
-  structure: [
-    [20, 28, 17, 26],
-    [26, 32, 23, 24],
-    [24, 38, 22, 36],
-    [36, 40, 32, 34],
-    [34, 50, 33, 48],
-    [48, 54, 44, 46],
-    [46, 62, 44, 60],
-    [60, 66, 56, 58],
-    [58, 74, 56, 72],
-    [72, 78, 68, 70],
-    [70, 86, 68, 84],
-    [84, 90, 80, 88],
-  ],
-  // balance, a sweep of the highs on candle 6, then delivery lower
-  liquidity: [
-    [50, 57, 46, 54],
-    [54, 59, 50, 56],
-    [56, 59, 52, 52],
-    [52, 57, 48, 56],
-    [56, 60, 53, 58],
-    [58, 90, 56, 60],
-    [60, 62, 44, 46],
-    [46, 50, 38, 40],
-    [40, 44, 32, 36],
-    [36, 39, 26, 30],
-    [30, 34, 22, 26],
-    [26, 30, 17, 21],
-  ],
   // the same read, repeated two matching cycles
   loop: [
     [28, 36, 25, 34],
@@ -241,47 +193,6 @@ function Art({ kind }) {
   return (
     <svg viewBox={`0 0 ${VB.w} ${VB.h}`} className="h-full w-full">
       {/* --- per-programme annotation, drawn under the candles --- */}
-      {kind === "structure" &&
-        [3, 5, 7].map((i) => (
-          <line
-            key={i}
-            x1={VB.padX}
-            x2={VB.w - VB.padX}
-            y1={y(series[i][2])}
-            y2={y(series[i][2])}
-            stroke={INK}
-            strokeOpacity="0.16"
-            strokeDasharray="3 5"
-          />
-        ))}
-
-      {kind === "liquidity" && (
-        <>
-          <rect
-            x={VB.padX}
-            y={y(62)}
-            width={VB.w - VB.padX * 2}
-            height={Math.abs(y(56) - y(62))}
-            fill={UP}
-            opacity="0.16"
-          />
-          <rect
-            x={VB.padX}
-            y={y(26)}
-            width={VB.w - VB.padX * 2}
-            height={Math.abs(y(20) - y(26))}
-            fill={UP}
-            opacity="0.16"
-          />
-          <text x={VB.padX} y={y(62) - 4} fontSize="7" fill="#7A7060">
-            BUY SIDE
-          </text>
-          <text x={VB.padX} y={y(20) + 9} fontSize="7" fill="#7A7060">
-            SELL SIDE
-          </text>
-        </>
-      )}
-
       {kind === "loop" && (
         <>
           <line
@@ -391,22 +302,6 @@ function Art({ kind }) {
       )}
 
       {/* --- the moment that matters --- */}
-      {kind === "structure" && (
-        <circle cx={at(10)} cy={y(86)} r="3.5" fill={RUST} />
-      )}
-      {kind === "liquidity" && (
-        <>
-          <line
-            x1={at(5)}
-            x2={at(5)}
-            y1={y(90)}
-            y2={y(62)}
-            stroke={RUST}
-            strokeWidth="2.5"
-          />
-          <circle cx={at(5)} cy={y(90)} r="3" fill={RUST} />
-        </>
-      )}
       {kind === "scan" &&
         [4, 9].map((i) => (
           <circle key={i} cx={at(i)} cy={y(series[i][1])} r="3" fill={RUST} />
@@ -528,7 +423,7 @@ export default function Method() {
           as="h2"
           className="u-display mt-10 max-w-4xl text-[clamp(2rem,10vw,3.4rem)] leading-[0.95] lg:text-[clamp(2.6rem,5vw,4.6rem)]"
         >
-          Choose your path. Seven programmes, one philosophy.
+          Choose your path. Five programmes, one philosophy.
         </Reveal>
       </div>
 
@@ -542,7 +437,7 @@ export default function Method() {
             <article className="u-card grid content-center gap-8 rounded-[2px] p-7 md:min-h-[56vh] md:grid-cols-12 md:gap-10 md:p-14">
               <div className="md:col-span-4">
                 <p className="u-mono text-[0.68rem] tracking-[0.2em] text-gold">
-                  {p.n} / 07
+                  {p.n} / 05
                 </p>
                 <h3 className="u-display mt-4 text-[clamp(1.9rem,9vw,2.8rem)] leading-[0.98] md:text-[clamp(1.8rem,3.2vw,3rem)]">
                   {p.title}

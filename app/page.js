@@ -5,6 +5,7 @@ import Cursor from "@/components/cursor";
 import Nav from "@/components/nav";
 import Hero from "@/components/hero";
 import Manifesto from "@/components/manifesto";
+import Courses from "@/components/courses";
 import Method from "@/components/method";
 import Stats from "@/components/stats";
 import WolfpackAi from "@/components/wolfpack-ai";
@@ -30,6 +31,7 @@ export default function Page() {
       <main>
         <Hero />
         <Manifesto />
+        <Courses />
         <Method />
         <Stats />
         <WolfpackAi />
