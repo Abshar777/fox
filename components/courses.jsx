@@ -38,8 +38,9 @@ export default function Courses() {
         </Reveal>
 
         <p className="u-eyebrow mt-6 max-w-xl text-ink-45">
-          Start with Forex Blueprint, graduate into Master PowerHouse. No
-          detours, no filler modules.
+          A structured path from market foundations to institutional
+          concepts, with live mentorship and real practice. No detours, no
+          filler modules.
         </p>
       </div>
 

@@ -10,8 +10,8 @@ const PROGRAMS = [
     n: "01",
     title: "Premium Community",
     lead: "Never trade alone.",
-    body: "A live trading community for daily signals, expert insights, market discussions and continued mentorship long after the last class.",
-    tags: ["Daily signals", "Market discussions", "Ongoing mentorship"],
+    body: "Daily signals backed by full market analysis, live discussions and continued mentorship from traders committed to your growth.",
+    tags: ["2–5 daily signals", "Live market discussions", "Ongoing mentorship"],
     art: "loop",
     cta: "Join the community",
   },
@@ -19,8 +19,8 @@ const PROGRAMS = [
     n: "02",
     title: "Wolfpack AI Technology",
     lead: "Insight, on tap.",
-    body: "Our proprietary AI scans the Gold and Forex markets, detects patterns and delivers actionable insights that complement your own analysis.",
-    tags: ["Gold & Forex scans", "Pattern detection", "Actionable insights"],
+    body: "Combines market structure, trend and risk into one system that flags high-probability entries and exits.",
+    tags: ["Entry & exit zones", "Market structure read", "Complements your strategy"],
     art: "scan",
     cta: "Explore Wolfpack AI",
   },
@@ -50,6 +50,15 @@ const PROGRAMS = [
     tags: ["Trading access only", "Full transparency", "Capital protection"],
     art: "accounts",
     cta: "Ask about MAM",
+  },
+  {
+    n: "06",
+    title: "Financial Advisor",
+    lead: "A plan before a position.",
+    body: "Personalised guidance to grow and protect your wealth, built around your goals, risk tolerance and a long-term plan.",
+    tags: ["Personalised strategy", "Risk-aware planning", "Long-term wealth"],
+    art: "advisory",
+    cta: "Talk to an advisor",
   },
 ];
 
@@ -137,6 +146,20 @@ const SERIES = {
     [64, 68, 60, 62],
     [62, 72, 60, 70],
     [70, 74, 66, 68],
+  ],
+  // steady, planned growth with small managed pullbacks
+  advisory: [
+    [20, 25, 18, 24],
+    [24, 28, 22, 23],
+    [23, 32, 21, 30],
+    [30, 34, 28, 29],
+    [29, 38, 27, 36],
+    [36, 40, 33, 34],
+    [34, 44, 32, 42],
+    [42, 46, 39, 40],
+    [40, 50, 38, 48],
+    [48, 52, 45, 46],
+    [46, 56, 44, 54],
   ],
 };
 
@@ -423,7 +446,7 @@ export default function Method() {
           as="h2"
           className="u-display mt-10 max-w-4xl text-[clamp(2rem,10vw,3.4rem)] leading-[0.95] lg:text-[clamp(2.6rem,5vw,4.6rem)]"
         >
-          Choose your path. Five programmes, one philosophy.
+          Choose your path. Six programmes, one philosophy.
         </Reveal>
       </div>
 
@@ -437,7 +460,7 @@ export default function Method() {
             <article className="u-card grid content-center gap-8 rounded-[2px] p-7 md:min-h-[56vh] md:grid-cols-12 md:gap-10 md:p-14">
               <div className="md:col-span-4">
                 <p className="u-mono text-[0.68rem] tracking-[0.2em] text-gold">
-                  {p.n} / 05
+                  {p.n} / 06
                 </p>
                 <h3 className="u-display mt-4 text-[clamp(1.9rem,9vw,2.8rem)] leading-[0.98] md:text-[clamp(1.8rem,3.2vw,3rem)]">
                   {p.title}
