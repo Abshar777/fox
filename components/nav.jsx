@@ -4,7 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { gsap, ScrollTrigger, useIsoLayoutEffect } from "@/lib/gsap";
-import { NAV_LINKS, resolveHref, isActiveLink } from "@/lib/nav-links";
+import {
+  NAV_LINKS,
+  PROGRAMME_LINKS,
+  resolveHref,
+  isActiveLink,
+} from "@/lib/nav-links";
 import { LogoMark, LogoFull } from "./logo";
 import { Magnetic } from "./ui";
 import ThemeToggle from "./theme-toggle";
@@ -243,6 +248,38 @@ export default function Nav() {
               {NAV_LINKS.map((l) => {
                 const href = resolveHref(l, pathname);
                 const on = (l.hash && active === l.hash) || isActiveLink(l, pathname);
+                if (l.label === "Programmes") {
+                  const programmeActive = pathname.startsWith("/programmes/");
+                  return (
+                    <details key={l.label} className="group relative">
+                      <summary
+                        className={`group relative flex cursor-pointer list-none items-baseline gap-2 px-3.5 py-2 [&::-webkit-details-marker]:hidden ${on || programmeActive ? "text-ink" : "text-ink-70"}`}
+                      >
+                        <span className="u-eyebrow transition-colors duration-400">{l.label}</span>
+                        <span aria-hidden="true" className="u-mono text-[0.55rem] transition-transform group-open:rotate-180">⌄</span>
+                        <span className={`absolute inset-x-3 bottom-0 h-px origin-left bg-gold transition-transform duration-500 ease-[var(--ease-out-expo)] ${on || programmeActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
+                      </summary>
+                      <div className="absolute left-0 top-full z-[80] mt-2 w-64 border border-[var(--rule)] bg-[color-mix(in_srgb,var(--color-bone)_96%,transparent)] p-2 shadow-[0_20px_50px_-24px_rgba(20,16,11,0.45)] backdrop-blur-xl">
+                        <NavHref
+                          href={href}
+                          className="u-mono block px-3 py-2.5 text-[0.58rem] tracking-[0.14em] text-ink-45 transition-colors hover:bg-gold/10 hover:text-gold-deep"
+                        >
+                          ALL PROGRAMMES ↗
+                        </NavHref>
+                        <div className="my-1 border-t border-[var(--rule)]" />
+                        {PROGRAMME_LINKS.map((programme) => (
+                          <Link
+                            key={programme.href}
+                            href={programme.href}
+                            className={`block px-3 py-2.5 text-[0.8rem] transition-colors hover:bg-gold/10 hover:text-gold-deep ${pathname === programme.href ? "text-gold-deep" : "text-ink-70"}`}
+                          >
+                            {programme.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </details>
+                  );
+                }
                 return (
                   <NavHref
                     key={l.label}
@@ -321,15 +358,44 @@ export default function Nav() {
             <nav className="flex flex-col">
               {NAV_LINKS.map((l) => (
                 <div key={l.label} className="js-mask border-b border-bone/10">
-                  <NavHref
-                    href={resolveHref(l, pathname)}
-                    onClick={() => setOpen(false)}
-                    className="menu-item group flex items-baseline gap-5 py-3"
-                  >
-                    <span className="u-display text-[13vw] leading-[0.95] text-bone transition-colors duration-500 group-hover:text-gold-lite sm:text-[9vw]">
-                      {l.label}
-                    </span>
-                  </NavHref>
+                  {l.label === "Programmes" ? (
+                    <details className="group">
+                      <summary className="menu-item flex cursor-pointer list-none items-baseline gap-5 py-3 [&::-webkit-details-marker]:hidden">
+                        <span className="u-display text-[13vw] leading-[0.95] text-bone transition-colors duration-500 group-hover:text-gold-lite sm:text-[9vw]">
+                          Programmes <span className="u-mono align-middle text-[0.8rem]">⌄</span>
+                        </span>
+                      </summary>
+                      <div className="grid grid-cols-2 gap-x-5 gap-y-2 pb-5 pl-2 sm:grid-cols-3">
+                        <NavHref
+                          href={resolveHref(l, pathname)}
+                          onClick={() => setOpen(false)}
+                          className="u-mono col-span-2 py-1 text-[0.6rem] tracking-[0.14em] text-gold-lite sm:col-span-3"
+                        >
+                          ALL PROGRAMMES ↗
+                        </NavHref>
+                        {PROGRAMME_LINKS.map((programme) => (
+                          <Link
+                            key={programme.href}
+                            href={programme.href}
+                            onClick={() => setOpen(false)}
+                            className="text-[0.78rem] leading-snug text-bone/65 transition-colors hover:text-gold-lite"
+                          >
+                            {programme.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </details>
+                  ) : (
+                    <NavHref
+                      href={resolveHref(l, pathname)}
+                      onClick={() => setOpen(false)}
+                      className="menu-item group flex items-baseline gap-5 py-3"
+                    >
+                      <span className="u-display text-[13vw] leading-[0.95] text-bone transition-colors duration-500 group-hover:text-gold-lite sm:text-[9vw]">
+                        {l.label}
+                      </span>
+                    </NavHref>
+                  )}
                 </div>
               ))}
             </nav>

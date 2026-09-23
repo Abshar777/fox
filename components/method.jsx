@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import { gsap, ScrollTrigger, useIsoLayoutEffect, REDUCED } from "@/lib/gsap";
 import { Magnetic, Reveal, SectionHead } from "./ui";
@@ -14,6 +15,7 @@ const PROGRAMS = [
     tags: ["2–5 daily signals", "Live market discussions", "Ongoing mentorship"],
     art: "loop",
     cta: "Join the community",
+    href: "/programmes/premium-community",
   },
   {
     n: "02",
@@ -23,6 +25,7 @@ const PROGRAMS = [
     tags: ["Entry & exit zones", "Market structure read", "Complements your strategy"],
     art: "scan",
     cta: "Explore Wolfpack AI",
+    href: "/programmes/ai-wolf-indicator",
   },
   {
     n: "03",
@@ -32,6 +35,7 @@ const PROGRAMS = [
     tags: ["Journal reviews", "Live analysis", "1:1 doubt clearing"],
     art: "review",
     cta: "Join the Bootcamp",
+    href: "/programmes/trading-course",
   },
   {
     n: "04",
@@ -41,6 +45,7 @@ const PROGRAMS = [
     tags: ["Compounding", "Capital allocation", "Senior mentor access"],
     art: "compound",
     cta: "Ask about the 5% Club",
+    href: "#contact",
   },
   {
     n: "05",
@@ -50,6 +55,7 @@ const PROGRAMS = [
     tags: ["Trading access only", "Full transparency", "Capital protection"],
     art: "accounts",
     cta: "Ask about MAM",
+    href: "/programmes/mam",
   },
   {
     n: "06",
@@ -59,6 +65,7 @@ const PROGRAMS = [
     tags: ["Personalised strategy", "Risk-aware planning", "Long-term wealth"],
     art: "advisory",
     cta: "Talk to an advisor",
+    href: "/programmes/financial-advisor",
   },
 ];
 
@@ -484,14 +491,14 @@ export default function Method() {
                 </ul>
 
                 <Magnetic strength={0.22} className="mt-8 inline-block">
-                  <a
-                    href="#contact"
+                  <Link
+                    href={p.href}
                     data-cursor="grow"
                     className="group u-mono inline-flex items-center gap-2 text-[0.62rem] uppercase tracking-[0.16em] text-ink transition-colors duration-500 hover:text-gold-deep"
                   >
                     {p.cta}
                     <TrendGlyph className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
-                  </a>
+                  </Link>
                 </Magnetic>
               </div>
 

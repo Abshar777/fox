@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FadeUp, Magnetic, Reveal, SectionHead } from "./ui";
 import { CandleGlyph, TrendGlyph } from "./icons";
 
@@ -12,6 +13,7 @@ const COURSES = [
     duration: "10–15 days · online & offline",
     tags: ["Market basics", "Gold trading", "Risk management"],
     cta: "Explore the course",
+    href: "/programmes/trading-course",
   },
   {
     n: "02",
@@ -21,6 +23,7 @@ const COURSES = [
     duration: "30–40 days · online & offline",
     tags: ["Institutional concepts", "Liquidity analysis", "Advanced price action"],
     cta: "Level up",
+    href: "/programmes/trading-course",
   },
 ];
 
@@ -90,14 +93,14 @@ export default function Courses() {
 
             <div className="relative mt-9">
               <Magnetic strength={0.22} className="inline-block">
-                <a
-                  href="#contact"
+                <Link
+                  href={c.href}
                   data-cursor="grow"
                   className="group/cta u-mono inline-flex items-center gap-2 text-[0.62rem] uppercase tracking-[0.16em] text-ink transition-colors duration-500 hover:text-gold-deep"
                 >
                   {c.cta}
                   <TrendGlyph className="h-4 w-4 transition-transform duration-500 group-hover/cta:translate-x-1" />
-                </a>
+                </Link>
               </Magnetic>
             </div>
           </article>

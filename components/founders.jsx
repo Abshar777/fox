@@ -82,7 +82,7 @@ function FounderCard({ f, i }) {
             alt={f.name}
             loading="lazy"
             onError={() => setFailed(true)}
-            className="absolute inset-0 h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-[1.04] group-hover:grayscale-0"
+            className="absolute inset-0 h-full w-full object-cover  transition-all duration-700 group-hover:scale-[1.04] "
           />
         )}
 
